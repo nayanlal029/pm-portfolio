@@ -98,6 +98,64 @@
 
   .srcs{font-size:12.5px;color:var(--muted);line-height:1.7}
   .srcs a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+
+  /* stat band */
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+  .stats .s{padding:16px 14px;border-right:1px solid var(--line-soft)}
+  .stats .s:last-child{border-right:none}
+  .stats .v{font-family:var(--serif);font-size:21px;color:var(--accent-ink);line-height:1.05}
+  .stats .l{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.35}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.stats .s{border-bottom:1px solid var(--line-soft)}}
+
+  /* concentric continuum */
+  .bull{display:grid;grid-template-columns:330px 1fr;gap:30px;align-items:center}
+  @media(max-width:760px){.bull{grid-template-columns:1fr;gap:18px}}
+  .bull svg{width:100%;height:auto;display:block;max-width:330px;margin:0 auto}
+  .bull .ring{cursor:pointer;transition:opacity .15s}
+  .bull.dim .ring:not(.active){opacity:.4}
+  .bull .ring.active{stroke:#11161d;stroke-width:2}
+  .leg{display:flex;flex-direction:column;gap:4px}
+  .leg .row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;cursor:pointer;border:1px solid transparent}
+  .leg .row:hover,.leg .row.active{background:var(--surface-2);border-color:var(--line)}
+  .leg .sw{width:13px;height:13px;border-radius:3px;flex:0 0 13px}
+  .leg .rn{font-size:13.5px;font-weight:650;color:var(--ink)}
+  .leg .rd{font-size:12px;color:var(--muted)}
+  .detail{margin-top:14px;border:1px solid var(--line);border-radius:var(--r-sm);padding:16px;background:var(--surface-2);min-height:104px}
+  .detail .dn{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:2px}
+  .detail .dm{display:flex;gap:22px;flex-wrap:wrap;margin:10px 0}
+  .detail .dm b{font-family:var(--serif);font-size:18px;color:var(--accent-ink);display:block;line-height:1.1}
+  .detail .dm span{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .detail p{font-size:12.8px;margin:0}
+
+  /* simulator */
+  .sim{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  @media(max-width:820px){.sim{grid-template-columns:1fr;gap:22px}}
+  .sim .ctrl label{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .sim .bal{font-family:var(--serif);font-size:36px;color:var(--ink);margin:6px 0 2px;line-height:1}
+  .sim input[type=range]{width:100%;accent-color:var(--accent);margin:12px 0 4px;cursor:pointer}
+  .ticks{display:flex;justify-content:space-between;font-size:10px;color:var(--faint)}
+  .evchips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .evchips button{font-size:12.5px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);border-radius:999px;padding:7px 13px;cursor:pointer;transition:.12s}
+  .evchips button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .elig{margin-top:18px;font-size:13px;color:var(--ink-soft);line-height:1.5}
+  .elig b{color:var(--accent-ink)}
+  .nudge{border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+  .nudge .nb{background:var(--accent);height:5px}
+  .nudge.block .nb{background:var(--faint)}
+  .nudge .ni{padding:18px 20px}
+  .nudge .why{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-bottom:10px}
+  .nudge .why .d{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:0 0 7px}
+  .nudge.block .why .d{background:var(--faint)}
+  .nudge h4{font-family:var(--sans);font-size:15.5px;font-weight:650;margin:0 0 6px;color:var(--ink)}
+  .nudge p{font-size:13px;margin:0 0 12px}
+  .nudge .fee{font-size:12px;color:var(--muted);margin-bottom:14px}
+  .nudge .acts{display:flex;gap:10px}
+  .nudge .acts button{font-size:13px;font-weight:600;border-radius:8px;padding:9px 14px;cursor:default}
+  .nudge .acts .b1{background:var(--accent);color:#fff;border:none}
+  .nudge .acts .b2{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+  .nudge .gate{font-size:11px;color:var(--accent-ink);background:var(--accent-soft);padding:9px 14px;border-top:1px solid #d8ebe2}
+  .nudge.block .gate{color:var(--ink-soft);background:var(--surface-2);border-top-color:var(--line)}
+  .simnote{font-size:11.5px;color:var(--muted);margin-top:10px}
 </style>
 </head>
 <body>
@@ -134,8 +192,15 @@
       <span class="chip">Reg BI &amp; fiduciary</span>
       <span class="chip">Eval governance</span>
     </div>
+    <div class="stats reveal" style="margin-bottom:22px">
+      <div class="s"><div class="v">~$10T+</div><div class="l">Global AUM (public, approx.)</div></div>
+      <div class="s"><div class="v">50M+</div><div class="l">Investors in 160+ countries</div></div>
+      <div class="s"><div class="v">30M+</div><div class="l">Retail clients to personalize for</div></div>
+      <div class="s"><div class="v">0.07%</div><div class="l">Avg fund fee vs 0.44% industry</div></div>
+      <div class="s"><div class="v">5–10×</div><div class="l">Advice fees vs fund fees: the lever</div></div>
+    </div>
     <div class="disclaimer reveal">
-      <strong>On scope and discretion.</strong> This is an independent thinking exercise built entirely from publicly available information. It is not affiliated with, endorsed by, or based on any confidential information from Vanguard. Product names are public; all figures are illustrative and directional, meant to frame a conversation rather than represent Vanguard's actual data, roadmap, or economics.
+      <strong>On scope and discretion.</strong> This is an independent thinking exercise built entirely from publicly available information (Vanguard's own advice pages, press, and analyst coverage). It is not affiliated with, endorsed by, or based on any confidential information from Vanguard. Thresholds and fees shown are public; proportions and any thresholds marked illustrative are directional, meant to frame a conversation rather than represent Vanguard's actual data, roadmap, or economics.
     </div>
   </section>
 
@@ -166,19 +231,31 @@
   <section class="wrap section" id="continuum">
     <p class="eyebrow reveal">Where the value is</p>
     <h2 class="reveal">The advice continuum, and the gap that matters</h2>
-    <p class="read reveal" style="margin-left:0">Vanguard already offers a continuum of advice, from low-minimum digital advice to dedicated and wealth-tier relationships. Service and cost rise from left to right. The largest pool of movable assets, and the largest unmet need, sits at the very first transition: self-directed investors who have never been matched to the next appropriate step.</p>
+    <p class="read reveal" style="margin-left:0">Picture the continuum as a target, not a staircase. The self-directed majority forms the wide outer ring; clients thin out and assets concentrate toward the centre, where a small number of wealth relationships sit above $5M. Minimums and fees rise inward. <span class="muted">Hover or tap any ring for the public thresholds.</span></p>
 
     <div class="card reveal" style="margin-top:22px">
-      <div class="stair">
-        <div class="step s1"><div class="bar"></div><div class="nm">Self-directed</div><div class="ds">No advice relationship</div></div>
-        <div class="step s2"><div class="bar"></div><div class="nm">Digital Advisor</div><div class="ds">All-digital, low minimum</div></div>
-        <div class="step s3"><div class="bar"></div><div class="nm">Personal Advisor</div><div class="ds">Hybrid: human + digital</div></div>
-        <div class="step s4"><div class="bar"></div><div class="nm">Advisor Select</div><div class="ds">Dedicated advisor</div></div>
-        <div class="step s5"><div class="bar"></div><div class="nm">Wealth</div><div class="ds">Complex planning</div></div>
+      <div class="bull" id="bull">
+        <svg viewBox="0 0 320 320" role="img" aria-label="Concentric advice continuum. Self-directed investors on the wide outer ring; wealth clients above five million dollars at the small centre.">
+          <circle class="ring" data-t="0" cx="160" cy="160" r="150" fill="#efe4c8"></circle>
+          <circle class="ring" data-t="1" cx="160" cy="160" r="120" fill="#d9ece2"></circle>
+          <circle class="ring" data-t="2" cx="160" cy="160" r="90"  fill="#aed4c3"></circle>
+          <circle class="ring" data-t="3" cx="160" cy="160" r="58"  fill="#5fa389"></circle>
+          <circle class="ring" data-t="4" cx="160" cy="160" r="30"  fill="#0e6b54"></circle>
+          <text x="160" y="164" text-anchor="middle" font-size="11" fill="#ffffff" font-weight="700" style="pointer-events:none">$5M+</text>
+        </svg>
+        <div>
+          <div class="leg" id="leg">
+            <div class="row" data-t="0"><span class="sw" style="background:#e7d3a0"></span><span><span class="rn">Self-directed</span> <span class="rd">· no advice · the outer majority</span></span></div>
+            <div class="row" data-t="1"><span class="sw" style="background:#d9ece2"></span><span><span class="rn">Digital Advisor</span> <span class="rd">· from $100</span></span></div>
+            <div class="row" data-t="2"><span class="sw" style="background:#aed4c3"></span><span><span class="rn">Personal Advisor</span> <span class="rd">· from $50K</span></span></div>
+            <div class="row" data-t="3"><span class="sw" style="background:#5fa389"></span><span><span class="rn">Advisor Select</span> <span class="rd">· from $500K</span></span></div>
+            <div class="row" data-t="4"><span class="sw" style="background:#0e6b54"></span><span><span class="rn">Wealth Management</span> <span class="rd">· from $5M</span></span></div>
+          </div>
+          <div class="detail" id="detail" aria-live="polite"></div>
+        </div>
       </div>
-      <div class="axis"><span>Lower service · lower cost</span><span>Higher service · higher cost →</span></div>
-      <div class="gapband">
-        <div class="band"><strong>Advice Moments works here.</strong> The activation gap between self-directed and the first advice step is where the most assets sit and where the next best step is least often surfaced. The goal is not to push everyone up the staircase, it is to match each investor to the step that genuinely fits, including staying self-directed.</div>
+      <div class="gapband" style="margin-top:18px">
+        <div class="band"><strong>Advice Moments works at the outer edge.</strong> The activation gap between the self-directed majority and the first human-advice step (Personal Advisor, from $50,000) is where the most movable assets sit and where the next best step is least often surfaced. Since advice fees run roughly 5 to 10 times fund fees, matching the right investor to the right step is both a service and a margin lever, when it genuinely fits.</div>
       </div>
     </div>
   </section>
@@ -198,6 +275,48 @@
       <div class="node"><div class="n">04 · ROUTE</div><h4>Consult or enroll</h4><p>One tap to a human consult or a digital start. Clean handoff with context to the advisor or flow.</p></div>
     </div>
     <div class="loopnote reveal"><span class="ic">↻</span> Outcomes (booked, enrolled, dismissed, complaint) feed evals that re-tune scoring, copy, and frequency, the system gets more useful and more careful over time.</div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- SIMULATOR -->
+  <section class="wrap section" id="try">
+    <p class="eyebrow reveal">See it work</p>
+    <h2 class="reveal">A moment, simulated</h2>
+    <p class="read reveal" style="margin-left:0">Drag the balance and pick a life event. Watch eligibility cross Vanguard's real public thresholds, and see the governed nudge Advice Moments would surface, or deliberately suppress. This is the whole signal-to-nudge loop in one playable view.</p>
+
+    <div class="card reveal" style="margin-top:22px">
+      <div class="sim">
+        <div class="ctrl">
+          <label>Investor balance</label>
+          <div class="bal" id="balVal">$120,000</div>
+          <input type="range" id="bal" min="0" max="100" value="55" aria-label="Investor balance" />
+          <div class="ticks"><span>$1K</span><span>$50K</span><span>$500K</span><span>$5M</span><span>$6M</span></div>
+          <label style="display:block;margin-top:20px">Life event · the signal</label>
+          <div class="evchips" id="ev">
+            <button data-e="rollover" class="on">Job change / rollover</button>
+            <button data-e="cash">Cash building up</button>
+            <button data-e="goal">New goal added</button>
+            <button data-e="retire">Nearing retirement</button>
+          </div>
+          <div class="elig" id="elig"></div>
+        </div>
+        <div>
+          <div class="nudge" id="nudge">
+            <div class="nb"></div>
+            <div class="ni">
+              <div class="why"><span class="d"></span><span id="whyTxt"></span></div>
+              <h4 id="nTitle"></h4>
+              <p id="nBody"></p>
+              <div class="fee" id="nFee"></div>
+              <div class="acts" id="nActs"><button class="b1">Talk to an advisor</button><button class="b2">Start digitally</button></div>
+            </div>
+            <div class="gate" id="nGate"></div>
+          </div>
+          <div class="simnote">Illustrative interaction. Thresholds and fees are public (investor.vanguard.com); the prompt copy is a mock, not a Vanguard message.</div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <hr class="hr" />
@@ -397,19 +516,78 @@
 
 <script>
   (function(){
+    // reveal on scroll
     var els=document.querySelectorAll('.reveal');
     if('IntersectionObserver' in window){
-      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.01,rootMargin:'0px 0px -8% 0px'});
       els.forEach(function(e){io.observe(e)});
+      // safety net: never leave content hidden
+      setTimeout(function(){els.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<window.innerHeight){e.classList.add('in');}});},1200);
     } else { els.forEach(function(e){e.classList.add('in')}); }
+    // reading progress
     var bar=document.getElementById('progress');
-    function onScroll(){
-      var h=document.documentElement;
-      var sc=(h.scrollTop||document.body.scrollTop);
-      var max=(h.scrollHeight-h.clientHeight)||1;
-      bar.style.width=(sc/max*100)+'%';
-    }
+    function onScroll(){var h=document.documentElement;var sc=(h.scrollTop||document.body.scrollTop);var max=(h.scrollHeight-h.clientHeight)||1;bar.style.width=(sc/max*100)+'%';}
     document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+    // ---- concentric continuum ----
+    var T=[
+      {n:'Self-directed', min:'No minimum', fee:'Fund fees (~0.07% avg)', who:'Brokerage and funds, no advice relationship. The widest ring, and the pool Advice Moments is built to serve.'},
+      {n:'Digital Advisor', min:'$100', fee:'0.20% gross (~0.15% net)', who:'All-digital robo advice. The lowest-friction first step onto the continuum.'},
+      {n:'Personal Advisor', min:'$50,000', fee:'0.35% / 0.40% gross', who:'Hybrid human plus digital. The first human-advice tier, eligibility begins at $50K.'},
+      {n:'Advisor Select', min:'$500,000', fee:'Tiered, max 0.30%', who:'A dedicated CFP advisor, a tailored plan, and ongoing portfolio management.'},
+      {n:'Wealth Management', min:'$5,000,000', fee:'Tiered, max 0.30%', who:'Personal Advisor Wealth Management: private-equity access, tax-loss harvesting, and estate planning, via the VNTC trust company.'}
+    ];
+    var bull=document.getElementById('bull');
+    if(bull){
+      var rings=[].slice.call(bull.querySelectorAll('.ring'));
+      var rows=[].slice.call(bull.querySelectorAll('.leg .row'));
+      var detail=document.getElementById('detail');
+      function renderDetail(i){var t=T[i];detail.innerHTML='<div class="dn">'+t.n+'</div><div class="dm"><div><b>'+t.min+'</b><span>Minimum</span></div><div><b>'+t.fee+'</b><span>Advisory fee</span></div></div><p>'+t.who+'</p>';}
+      function highlight(i){bull.classList.add('dim');rings.forEach(function(r){r.classList.toggle('active',r.getAttribute('data-t')===String(i));});rows.forEach(function(r){r.classList.toggle('active',r.getAttribute('data-t')===String(i));});}
+      function clearHi(){bull.classList.remove('dim');rings.forEach(function(r){r.classList.remove('active');});rows.forEach(function(r){r.classList.remove('active');});}
+      function bind(el){var i=+el.getAttribute('data-t');el.addEventListener('mouseenter',function(){renderDetail(i);highlight(i);});el.addEventListener('click',function(){renderDetail(i);highlight(i);});}
+      rings.forEach(bind);rows.forEach(bind);
+      bull.addEventListener('mouseleave',clearHi);
+      renderDetail(0);
+    }
+
+    // ---- advice moment simulator ----
+    var bal=document.getElementById('bal');
+    if(bal){
+      var balVal=document.getElementById('balVal'),elig=document.getElementById('elig'),
+          nudge=document.getElementById('nudge'),whyTxt=document.getElementById('whyTxt'),
+          nTitle=document.getElementById('nTitle'),nBody=document.getElementById('nBody'),
+          nFee=document.getElementById('nFee'),nActs=document.getElementById('nActs'),
+          nGate=document.getElementById('nGate'),ev=document.getElementById('ev');
+      var event='rollover';
+      var whyMap={rollover:'A rollover just landed and your balance changed.',cash:'Your cash balance has been climbing.',goal:'You added a new goal to your plan.',retire:'You are within about ten years of your target retirement date.'};
+      function dollars(v){var lo=1000,hi=6000000;return lo*Math.pow(hi/lo,v/100);}
+      function fmt(d){if(d>=1e6)return '$'+(d/1e6).toFixed(1)+'M';if(d>=1000)return '$'+Math.round(d/1000)+'K';return '$'+Math.round(d);}
+      function tierOf(d){return d>=5e6?4:d>=5e5?3:d>=5e4?2:d>=100?1:0;}
+      function render(){
+        var d=dollars(+bal.value),t=tierOf(d);
+        balVal.textContent=fmt(d);
+        whyTxt.textContent='Why am I seeing this? '+whyMap[event];
+        nActs.style.display='flex';nudge.classList.remove('block');
+        if(t>=2){
+          elig.innerHTML='Eligible for: <b>'+T[t].n+'</b> (from '+T[t].min+'). Advice Moments surfaces a governed prompt.';
+          if(t===2){nTitle.textContent='A fit worth a look: Personal Advisor';nBody.textContent='Given this moment and a balance over $50,000, you may be a fit for Personal Advisor, hybrid human and digital advice. No pressure, just an honest look at whether it helps.';nFee.textContent='From $50,000 · about 0.30% net advisory fee';}
+          else if(t===3){nTitle.textContent='You may be eligible for Advisor Select';nBody.textContent='With over $500,000 invested, a dedicated CFP and a tailored, actively managed plan are available through Personal Advisor Select.';nFee.textContent='From $500,000 · tiered fee, max 0.30%';}
+          else{nTitle.textContent='Personal Advisor Wealth Management';nBody.textContent='Above $5M, dedicated wealth planning with estate and tax strategies and private-market access is available, delivered through the VNTC trust company.';nFee.textContent='From $5,000,000 · tiered fee, max 0.30%';}
+          nGate.textContent='Passed the suitability gate · frequency-capped · one-tap opt-out';
+        } else {
+          elig.innerHTML='Eligible for: <b>self-serve or Digital Advisor</b> (from $100). Below the $50K advice threshold, the engine holds back.';
+          nudge.classList.add('block');nActs.style.display='none';
+          nTitle.textContent='Advice Moments stays quiet';
+          nBody.textContent='Below the $50,000 Personal Advisor threshold, advice may not add enough value yet. The engine waits for a moment that genuinely helps rather than nudging for its own sake.';
+          nFee.textContent='';
+          nGate.textContent='Suppressed by the benefit and suitability gate. Restraint is a feature, not a miss.';
+        }
+      }
+      bal.addEventListener('input',render);
+      ev.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;event=b.getAttribute('data-e');[].slice.call(ev.querySelectorAll('button')).forEach(function(x){x.classList.toggle('on',x===b);});render();});
+      render();
+    }
   })();
 </script>
 </body>
