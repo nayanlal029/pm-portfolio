@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Advice Moments · AI-PRD (behavioral contract) · Nayan Lal</title>
+<link rel="stylesheet" href="../../assets/site.css" />
+<style>
+  body{background:var(--surface-2)}
+  .doc{max-width:820px;margin:28px auto;background:#fff;border:1px solid var(--line);border-radius:12px;padding:46px 54px;box-shadow:var(--shadow)}
+  .mast{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:24px;font-size:12px;color:var(--muted)}
+  .mast .r{font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--accent)}
+  h1{font-size:32px;margin:0 0 6px}
+  .subtitle{font-family:var(--serif);font-size:17px;color:var(--ink-soft);margin:0 0 18px}
+  .disc{font-size:11.5px;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:11px 14px;line-height:1.5;margin-bottom:8px}
+  h2{font-size:13px;font-family:var(--sans);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin:30px 0 10px;padding-top:14px;border-top:1px solid var(--line-soft)}
+  h2:first-of-type{border-top:none}
+  h3{font-size:15.5px;font-family:var(--sans);font-weight:650;margin:16px 0 6px;color:var(--ink)}
+  p{font-size:13.8px} li{font-size:13.8px;color:var(--ink-soft);margin-bottom:5px}
+  .lead{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.55}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:720px){.twocol{grid-template-columns:1fr}}
+  .box{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--surface)}
+  .box.good{background:#f4faf7;border-color:#d8ebe2}
+  .box .bt{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .box.good .bt{color:var(--accent-ink)}
+  table{width:100%;border-collapse:collapse;font-size:12.8px;margin:6px 0}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  td.m{font-weight:650;color:var(--ink);white-space:nowrap}
+  .th{color:var(--accent-ink);font-weight:650}
+  .chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:4px}
+  .chip{font-size:11.5px}
+  .foot{margin-top:28px;border-top:1px solid var(--line);padding-top:14px;font-size:11.5px;color:var(--muted);line-height:1.6}
+  .num{color:var(--accent);font-weight:700}
+  @page{size:A4;margin:15mm 14mm}
+  @media print{
+    body{background:#fff}
+    .doc{max-width:none;margin:0;border:0;border-radius:0;padding:0;box-shadow:none}
+    h2,h3{break-after:avoid}.box,table,.twocol{break-inside:avoid}
+    a{color:inherit;text-decoration:none}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="mast">
+    <span class="r">Product requirements · AI behavioral contract</span>
+    <span>Nayan Lal · v0.1 discussion draft</span>
+  </div>
+
+  <h1>Advice Moments</h1>
+  <p class="subtitle">A governed personalization layer that surfaces the right advice step, to the right self-directed investor, at the right moment.</p>
+  <div class="disc"><strong>Scope &amp; discretion.</strong> Independent thinking exercise built entirely from public information. Not affiliated with, endorsed by, or based on confidential information from Vanguard. Product names are public; all figures, thresholds, and timelines are illustrative and directional, intended to frame a conversation.</div>
+
+  <h2>1 · Problem</h2>
+  <p class="lead">For a self-directed investor, advice is still a destination, a separate decision and motion, when it should be a moment. The investor who would benefit most, navigating a rollover, a windfall, a new goal, or simply rising complexity, rarely gets a relevant, plain-language prompt while the need is live. The capability to detect that moment and respond to it well, in-product, at scale, and within fiduciary guardrails, is the opportunity.</p>
+  <p>Vanguard's investor-owned structure makes broadening access to advice both mission-aligned and a growth lever, and leadership has publicly framed it as a priority. The largest pool of movable assets and unmet need sits at the first transition of the advice continuum: self-directed investors never matched to the next appropriate step.</p>
+
+  <h2>2 · Goals &amp; non-goals</h2>
+  <div class="twocol">
+    <div class="box good">
+      <div class="bt">Goals</div>
+      <ul style="margin:0;padding-left:18px">
+        <li>Grow appropriately advised assets via well-timed, relevant prompts</li>
+        <li>Match each investor to the genuinely suitable step (including staying self-directed)</li>
+        <li>Ship value fast with no model risk, then add intelligence behind evals</li>
+        <li>Make every prompt suitable, explainable, capped, and reversible</li>
+      </ul>
+    </div>
+    <div class="box">
+      <div class="bt">Non-goals</div>
+      <ul style="margin:0;padding-left:18px">
+        <li>Maximizing clicks or up-tier conversions for their own sake</li>
+        <li>Specific security recommendations or performance promises</li>
+        <li>Replacing advisors; this routes to them with context</li>
+        <li>A persistent "get advice" ad rather than a moment-triggered prompt</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>3 · Users &amp; jobs-to-be-done</h2>
+  <table>
+    <thead><tr><th>User</th><th>Job-to-be-done</th><th>What "good" looks like</th></tr></thead>
+    <tbody>
+      <tr><td class="m">Self-directed investor</td><td>Handle a change in my situation without becoming an expert</td><td>A relevant, honest, optional prompt at the right time</td></tr>
+      <tr><td class="m">Advice-curious investor</td><td>Understand whether advice fits, and at what cost</td><td>Plain-language fit + fee, one tap to a consult or digital start</td></tr>
+      <tr><td class="m">Advisor / advice ops</td><td>Receive qualified, in-context consults I can absorb</td><td>Clean handoff with the triggering context; demand it can serve</td></tr>
+      <tr><td class="m">Compliance / risk</td><td>Ensure every prompt is suitable and defensible</td><td>Pre-send suitability gate, audit trail, documented governance</td></tr>
+    </tbody>
+  </table>
+
+  <h2>4 · Solution overview</h2>
+  <p>A closed loop: <span class="num">Signal</span> (detect a real moment) → <span class="num">Score</span> (would advice benefit, which tier) → <span class="num">Nudge</span> (governed, explainable prompt) → <span class="num">Route</span> (human consult or digital flow). Outcomes feed evals that re-tune scoring, copy, and frequency. The system should become both more useful and more careful over time.</p>
+
+  <h2>5 · Functional requirements (phased)</h2>
+  <h3>Phase 0 · Rules &amp; library <span style="color:var(--muted);font-weight:400">(~1 quarter, no ML)</span></h3>
+  <ul>
+    <li>Deterministic triggers from public, first-party signals (e.g., rollover detected, cash above a threshold, a goal added)</li>
+    <li>Curated library of plain-language prompts, each pre-mapped to a suitable advice tier and pre-cleared by compliance</li>
+    <li>One surface, one or two moments, strict frequency caps and cool-downs</li>
+    <li>Explainability ("why am I seeing this") and one-tap opt-out from day one</li>
+  </ul>
+  <h3>Phase 1 · Predictive scoring <span style="color:var(--muted);font-weight:400">(+1–2 quarters)</span></h3>
+  <ul>
+    <li>Propensity-and-benefit model ranks who, which tier, and when</li>
+    <li>Holdout groups measure true incremental lift, not clicks</li>
+    <li>Suppression model prevents over-contacting; release gated by evals</li>
+  </ul>
+  <h3>Phase 2 · Generative guidance <span style="color:var(--muted);font-weight:400">(later)</span></h3>
+  <ul>
+    <li>LLM explains the recommendation and answers follow-ups in plain language</li>
+    <li>Strictly retrieval-grounded; no performance promises; no specific security advice</li>
+    <li>Human-in-the-loop for anything approaching a recommendation boundary</li>
+  </ul>
+
+  <h2>6 · The behavioral contract</h2>
+  <p>The recommendation is probabilistic: the same investor can be scored differently as data shifts, and quality lives in distributions, not pass/fail. So the spec defines what good looks like numerically, how the system fails safely, and where it must stop.</p>
+
+  <h3>6.1 Eval-driven acceptance criteria (illustrative)</h3>
+  <table>
+    <thead><tr><th>Dimension</th><th>How measured</th><th>Release bar</th></tr></thead>
+    <tbody>
+      <tr><td class="m">Suitability precision</td><td>Audited sample + rules check on every prompt</td><td><span class="th">≥ 99.5%</span>; zero tolerance for clearly unsuitable</td></tr>
+      <tr><td class="m">Incremental benefit</td><td>Holdout vs. nudged; appropriate take-up lift</td><td><span class="th">Positive, significant</span> over control</td></tr>
+      <tr><td class="m">Helpfulness</td><td>Human-rated relevance and clarity</td><td><span class="th">≥ 4.3 / 5</span> median</td></tr>
+      <tr><td class="m">Non-coercion / tone</td><td>LLM-as-judge + human review for pressure/hype</td><td><span class="th">0</span> coercive/misleading in sample</td></tr>
+      <tr><td class="m">Factuality (Phase 2)</td><td>Grounded-generation eval; unsupported-claim rate</td><td><span class="th">&lt; 0.5%</span>, block on fail</td></tr>
+    </tbody>
+  </table>
+  <p class="num" style="font-size:12px;color:var(--muted)">Ship in reporting mode first; compare automated scores to human judgment; then block deployment on trusted metrics for safety, suitability, and regression cases.</p>
+
+  <h3>6.2 Failure modes</h3>
+  <table>
+    <thead><tr><th>Failure</th><th>Detect</th><th>User-facing response</th><th>Alert &amp; recover</th></tr></thead>
+    <tbody>
+      <tr><td class="m">Over-nudging</td><td>Caps; dismissal/complaint rate by cohort</td><td>Suppress; cool-down; "show me less"</td><td>Spike alerts; auto-throttle; review copy/targeting</td></tr>
+      <tr><td class="m">Unsuitable recommendation</td><td>Pre-send suitability gate; audit sample</td><td>Hard block; nothing unsuitable ships</td><td>Gate bypass pages team; roll back; re-eval</td></tr>
+      <tr><td class="m">Model drift</td><td>Live score-distribution &amp; lift vs. baseline</td><td>Fall back to Phase 0 rules</td><td>Drift breach on-call; retrain; staged re-release</td></tr>
+      <tr><td class="m">Generative hallucination</td><td>Grounded evals; unsupported-claim classifier</td><td>Constrain to retrieved facts; refuse off-scope</td><td>Rate over bar blocks deploy; human review queue</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.3 Guardrails &amp; governance</h3>
+  <div class="chips">
+    <span class="chip accent">Reg BI / fiduciary suitability gate</span>
+    <span class="chip accent">Human-in-the-loop at recommendation boundaries</span>
+    <span class="chip">Frequency caps &amp; cool-downs</span>
+    <span class="chip">Explainability ("why am I seeing this")</span>
+    <span class="chip">One-tap opt-out, honored everywhere</span>
+    <span class="chip">No performance promises / no security advice</span>
+    <span class="chip">EU AI Act-style risk classification &amp; documentation</span>
+    <span class="chip">Bias &amp; fairness review across cohorts</span>
+  </div>
+
+  <h3>6.4 Data &amp; model dependencies</h3>
+  <ul>
+    <li>First-party, consented signals only; clear lawful basis and retention limits</li>
+    <li>Suitability reference data and rules owned with compliance</li>
+    <li>Model registry, versioning, and rollback; eval suite in CI before any release</li>
+    <li>Phase 2: retrieval corpus restricted to approved, current, factual content</li>
+  </ul>
+
+  <h2>7 · Success metrics</h2>
+  <ul>
+    <li><strong>North star:</strong> appropriately advised assets (incremental vs. holdout)</li>
+    <li><strong>Funnel:</strong> relevant nudge → consult booked / digital start → enrolled</li>
+    <li><strong>Guardrails (must not regress):</strong> suitability precision, complaint rate, opt-out rate</li>
+    <li><strong>Business:</strong> downstream retention and advised vs. self-directed mix</li>
+  </ul>
+
+  <h2>8 · Go-to-market &amp; rollout</h2>
+  <ul>
+    <li>Start on the highest-intent logged-in surface, one or two moments, small holdout-controlled cohort</li>
+    <li>Coordinate with advice operations so consult demand matches capacity</li>
+    <li>Expand surfaces and moments only as evals and guardrail metrics hold</li>
+  </ul>
+
+  <h2>9 · Risks &amp; mitigations</h2>
+  <table>
+    <thead><tr><th>Risk</th><th>Mitigation</th></tr></thead>
+    <tbody>
+      <tr><td class="m">Trust erosion from feeling "sold to"</td><td>Moment-triggered relevance, honesty about fee/fit, hard caps, easy opt-out</td></tr>
+      <tr><td class="m">Compliance throughput bottleneck</td><td>Pre-cleared library in Phase 0; templated, auditable prompts</td></tr>
+      <tr><td class="m">Advisor capacity can't absorb demand</td><td>Throttle by capacity; favor digital routes where suitable</td></tr>
+      <tr><td class="m">Optimizing the wrong metric</td><td>North star is incremental suitable assets, not clicks; guardrails gate release</td></tr>
+    </tbody>
+  </table>
+
+  <h2>10 · Open questions for the team</h2>
+  <ul>
+    <li>Where does the activation gap leak most: public site, logged-in, onboarding, or mobile?</li>
+    <li>Real constraint on advice growth: surfacing, advisor capacity, or compliance throughput?</li>
+    <li>How is suitability operationalized today, and what must a pre-send gate integrate with?</li>
+    <li>What take-up number does the team already trust, to anchor evals?</li>
+    <li>How will the India product org own this: end-to-end surfaces, or with US client-experience owners?</li>
+  </ul>
+
+  <div class="foot">
+    <strong>Sources &amp; notes.</strong> Built from public information on Vanguard's business, advice continuum, and investor-owned structure; public statements on broadening access to advice; U.S. SEC Regulation Best Interest; the EU AI Act's risk-based approach to AI governance; and current public practice on AI product evals and failure-mode design. All figures, thresholds, and timelines are illustrative. Independent work by Nayan Lal, not affiliated with or endorsed by Vanguard, and not based on any confidential information. nayanlal1909@gmail.com · linkedin.com/in/nayan-lal
+  </div>
+</div>
+</body>
+</html>

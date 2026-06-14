@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>M&amp;A Software — Competitive Landscape</title>
+<style>
+  :root{
+    --bg:#f5f6f4; --card:#ffffff; --ink:#1b2420; --muted:#5f6b66; --line:#e3e6e2;
+    --teal:#0f6e56; --teal-mid:#1d9e75; --teal-soft:#e1f5ee; --accent:#0f6e56;
+    /* heat ramp 0->3 */
+    --h0:#f0f1ee; --h1:#d7efe6; --h2:#7fd3b4; --h3:#1d9e75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 24px 64px}
+  header{margin-bottom:24px}
+  .eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);font-weight:600;margin:0 0 6px}
+  h1{font-size:26px;font-weight:600;margin:0 0 6px}
+  .sub{color:var(--muted);font-size:15px;margin:0}
+  .meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
+  .pill{font-size:12px;padding:4px 10px;border-radius:999px;background:var(--teal-soft);color:var(--teal);font-weight:600}
+  .pill.ghost{background:#eef0ed;color:var(--muted)}
+  .cta{display:inline-block;margin-top:14px;background:var(--teal);color:#fff;font-size:13.5px;font-weight:600;padding:9px 16px;border-radius:10px;text-decoration:none}
+  .cta:hover{background:#0c5a46}
+  .cta .ar{margin-left:6px}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 28px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .kpi .label{font-size:12.5px;color:var(--muted);margin:0 0 8px}
+  .kpi .val{font-size:24px;font-weight:600;margin:0;color:var(--ink)}
+  .kpi .note{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+  .kpi.alt .val{color:var(--teal)}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px;align-items:center}
+  .controls .lbl{font-size:12.5px;color:var(--muted);margin-right:4px}
+  .fbtn{font-size:13px;padding:6px 13px;border-radius:999px;border:1px solid var(--line);
+    background:var(--card);color:var(--muted);cursor:pointer;font-weight:500}
+  .fbtn.on{background:var(--teal);border-color:var(--teal);color:#fff}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:11px 12px;font-size:13.5px;border-bottom:1px solid var(--line)}
+  thead th{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:600;background:#fafbfa}
+  thead th.stage{text-align:center}
+  tbody tr{cursor:pointer;transition:background .12s}
+  tbody tr:hover{background:#f6faf8}
+  tbody tr.sel{background:var(--teal-soft)}
+  tbody tr.us td.co{font-weight:700}
+  td.co{white-space:nowrap}
+  .cat{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:2px}
+  .cell{width:64px;text-align:center;color:#0c3a2c;font-weight:600;border-radius:6px}
+  .star{color:var(--teal);font-size:11px;margin-left:5px;font-weight:700}
+  .ext{margin-left:7px;color:var(--teal);text-decoration:none;font-weight:700;font-size:12px}
+  .ext:hover{text-decoration:underline}
+  .extf{color:var(--teal);font-weight:600;text-decoration:none}
+  .extf:hover{text-decoration:underline}
+  .legend{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:14px 2px 0;font-size:12px;color:var(--muted)}
+  .swatch{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:5px}
+  .detail{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;min-height:90px}
+  .detail h3{margin:0 0 2px;font-size:17px;font-weight:600}
+  .detail .dcat{color:var(--teal);font-size:12.5px;font-weight:600;margin:0 0 12px}
+  .drow{display:flex;gap:10px;margin:7px 0;font-size:13.5px}
+  .drow .k{flex:0 0 86px;color:var(--muted);font-weight:600}
+  .drow .v{flex:1}
+  .v .good{color:var(--teal)}
+  .facts{display:flex;gap:18px;flex-wrap:wrap;margin:12px 0 0;font-size:12.5px;color:var(--muted)}
+  .facts b{color:var(--ink);font-weight:600}
+  .quad{margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+  .quad .qtitle{font-size:17px;font-weight:600;margin:0 0 4px}
+  .quad .qsub{font-size:13px;color:var(--muted);margin:0 0 10px;line-height:1.5}
+  .callout{margin-top:24px;background:#0f3b30;color:#eafff6;border-radius:16px;padding:22px 24px}
+  .callout h2{margin:0 0 8px;font-size:18px;font-weight:600;color:#fff}
+  .callout p{margin:0;font-size:14.5px;line-height:1.65;color:#cdeede}
+  .callout .lane{display:inline-block;margin-top:12px;font-size:12.5px;background:#1d9e75;color:#04221a;padding:5px 12px;border-radius:999px;font-weight:700}
+  footer{margin-top:28px;font-size:12px;color:var(--muted);line-height:1.7}
+  footer b{color:var(--ink)}
+  .src{margin-top:10px}
+  .howto{margin-top:14px;background:#eef3f1;border:1px dashed #bcd5cc;border-radius:12px;padding:12px 14px;font-size:12.5px;color:#3f5b53}
+  @media(max-width:720px){.kpis{grid-template-columns:1fr}.cell{width:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">M&amp;A software · market &amp; competitive map</p>
+    <h1>Where the deal-lifecycle platforms actually compete</h1>
+    <p class="sub">A one-glance read on who covers which stage of the M&amp;A lifecycle, how AI-forward they are, and where the open lane is.</p>
+    <div class="meta">
+      <span class="pill">Last updated: June 2026</span>
+      <span class="pill ghost">Interactive — click any company for detail</span>
+      <span class="pill ghost">Single file · works offline</span>
+    </div>
+    <a class="cta" href="./MergerWare_Product_Strategy_and_PRD.pdf" target="_blank" rel="noopener">Read the full product strategy &amp; PRD (PDF)<span class="ar">→</span></a>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi">
+      <p class="label">Virtual data room market (2025)</p>
+      <p class="val">~$3.4B</p>
+      <p class="note">Growing ~18–22% CAGR. The data-room slice; full lifecycle software is larger.</p>
+    </div>
+    <div class="kpi alt">
+      <p class="label">Where AI investment is concentrated</p>
+      <p class="val">Pre-deal</p>
+      <p class="note">Diligence &amp; sourcing — the crowded, fast-commoditizing lane.</p>
+    </div>
+    <div class="kpi">
+      <p class="label">Deals that underdeliver on value</p>
+      <p class="val">70–90%</p>
+      <p class="note">Mostly post-close, in integration — widely cited (HBR / McKinsey / BCG).</p>
+    </div>
+  </div>
+
+  <div class="controls">
+    <span class="lbl">Filter:</span>
+    <button class="fbtn on" data-f="all">All</button>
+    <button class="fbtn" data-f="Lifecycle platform">Lifecycle platforms</button>
+    <button class="fbtn" data-f="VDR incumbent">VDR incumbents</button>
+    <button class="fbtn" data-f="AI-native">AI-natives</button>
+  </div>
+
+  <div class="panel">
+    <table>
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th class="stage">Sourcing</th>
+          <th class="stage">Diligence / VDR</th>
+          <th class="stage">Pipeline</th>
+          <th class="stage">Integration &amp; value</th>
+          <th class="stage">AI maturity</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <div class="legend">
+    <span><span class="swatch" style="background:var(--h0)"></span>None</span>
+    <span><span class="swatch" style="background:var(--h1)"></span>Light</span>
+    <span><span class="swatch" style="background:var(--h2)"></span>Solid</span>
+    <span><span class="swatch" style="background:var(--h3)"></span>Leading</span>
+    <span style="margin-left:auto">Cells score each vendor's depth at that stage (0–3).</span>
+  </div>
+
+  <div class="detail" id="detail"></div>
+
+  <div class="quad">
+    <h2 class="qtitle">Why the top-right corner is empty</h2>
+    <p class="qsub">Same field, two axes: how far a vendor reaches into integration &amp; value capture (across) vs. how AI-native it is (up). The well-funded AI-natives and the VDR incumbents are all pinned to the pre-deal left. MergerWare is the only one on the right edge — one AI notch from the open corner.</p>
+    <svg viewBox="0 0 670 360" width="100%" role="img" aria-label="Positioning map. Well-funded AI-native vendors (Hebbia, Rogo, Model ML, Grata) and VDR incumbents (Datasite, Intralinks, Ansarada) cluster on the pre-deal left with little or no integration depth. MergerWare sits far right on integration at mid AI. The top-right corner — AI-native and owns integration — is empty.">
+      <!-- shaded zones -->
+      <rect x="55" y="44" width="280" height="172" fill="#f3f5f3"/>
+      <text x="195" y="36" text-anchor="middle" font-size="10.5" fill="#9aa39e">where the funded AI is concentrating</text>
+      <rect x="405" y="50" width="250" height="88" fill="#e6f7f0" stroke="#1d9e75" stroke-dasharray="5 4" rx="8"/>
+      <text x="530" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="#0f6e56">open corner</text>
+      <text x="530" y="96" text-anchor="middle" font-size="11" fill="#3f5b53">AI-native + owns integration</text>
+      <text x="530" y="112" text-anchor="middle" font-size="11" fill="#3f5b53">no one is here</text>
+      <!-- axes -->
+      <line x1="55" y1="320" x2="655" y2="320" stroke="#cdd3cf" stroke-width="1.5"/>
+      <line x1="55" y1="320" x2="55" y2="44" stroke="#cdd3cf" stroke-width="1.5"/>
+      <text x="59" y="338" font-size="11" fill="#5f6b66">Pre-deal only</text>
+      <text x="651" y="338" text-anchor="end" font-size="11" fill="#5f6b66">Owns integration &amp; value capture →</text>
+      <text x="46" y="316" text-anchor="end" font-size="11" fill="#5f6b66" transform="rotate(-90 46 316)">Low AI</text>
+      <text x="46" y="52" text-anchor="end" font-size="11" fill="#5f6b66" transform="rotate(-90 46 52)">AI-native ↑</text>
+      <!-- competitor points -->
+      <g font-size="11.5" fill="#1b2420">
+        <circle cx="92" cy="66" r="6" fill="#1d9e75"/><text x="102" y="70">Datasite</text>
+        <circle cx="215" cy="60" r="6" fill="#1d9e75"/><text x="225" y="64">Hebbia</text>
+        <circle cx="150" cy="96" r="6" fill="#1d9e75"/><text x="160" y="100">Rogo</text>
+        <circle cx="298" cy="74" r="6" fill="#1d9e75"/><text x="308" y="78">Ansarada</text>
+        <circle cx="235" cy="124" r="6" fill="#1d9e75"/><text x="245" y="128">Grata</text>
+        <circle cx="350" cy="104" r="6" fill="#1d9e75"/><text x="343" y="108" text-anchor="end">Model ML</text>
+        <circle cx="98" cy="152" r="6" fill="#1d9e75"/><text x="108" y="156">Intralinks</text>
+        <circle cx="360" cy="186" r="6" fill="#1d9e75"/><text x="370" y="190">DealRoom</text>
+        <circle cx="470" cy="168" r="6" fill="#1d9e75"/><text x="480" y="172">Midaxo</text>
+        <circle cx="475" cy="258" r="6" fill="#1d9e75"/><text x="485" y="262">Devensoft</text>
+        <!-- MergerWare highlighted + arrow toward open corner -->
+        <circle cx="600" cy="170" r="9" fill="#0f6e56" stroke="#0f6e56" stroke-opacity="0.25" stroke-width="6"/>
+        <text x="588" y="174" text-anchor="end" font-size="12.5" font-weight="700" fill="#0f3b30">MergerWare</text>
+        <line x1="602" y1="160" x2="614" y2="132" stroke="#0f6e56" stroke-width="2"/>
+        <polygon points="614,132 608,136 614,140" fill="#0f6e56"/>
+        <text x="620" y="132" font-size="10.5" fill="#0f6e56">the move</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="callout">
+    <h2>The open lane</h2>
+    <p>Read the map left-to-right. Competitors crowd the left — sourcing and diligence — which is exactly where AI money is pouring in and margins are thinning. The right side, post-merger integration and value capture, is where 70–90% of deals underdeliver, and it sits almost empty across the field. It also happens to be the stage MergerWare already owns and its founder knows cold. The strategic bet writes itself: take AI to value realization, not to the crowded diligence lane.</p>
+    <span class="lane">Crowded left → open right</span>
+  </div>
+
+  <footer>
+    <div><b>How to read it.</b> Each cell scores how deep a vendor is at that lifecycle stage, 0 (none) to 3 (leading), based on public product pages, third-party reviews and category positioning. Scores are directional judgments for conversation, not a benchmark.</div>
+    <div class="src"><b>Sources.</b> Market size — Fortune Business Insights, Research and Markets, SkyQuest (VDR market, 2025–26). Competitor features — EthosData 2026 VDR guide, V7 Labs AI-data-room review, Ansarada, vendor sites, G2 comparisons. AI-natives (Hebbia, Rogo, Model ML, Grata) — company sites and press; funding figures (~$75M Rogo, $75M Series A Model ML) as reported, not independently verified. Deal-failure range — widely cited (HBR / McKinsey / BCG). MergerWare — mergerware.com, CEO interviews (SuperbCrew, AI-Tech Park); revenue/headcount estimate via getlatka (third-party, unverified).</div>
+    <div class="howto"><b>Refreshing this file:</b> every number lives in the <code>COMPANIES</code> and the KPI text near the top of the source. Edit the values + the “Last updated” date, save, reopen — no install, no internet needed. Or ask Nayan’s assistant to re-run the research and regenerate it.</div>
+  </footer>
+
+</div>
+
+<script>
+/* ---- DATA (edit here to refresh) ------------------------------------------
+   coverage = [sourcing, diligence/VDR, pipeline, integration&value], each 0-3
+   ai       = AI maturity 0-3
+--------------------------------------------------------------------------- */
+const COMPANIES = [
+  { name:"MergerWare", us:true, category:"Lifecycle platform", coverage:[1,2,2,3], ai:2,
+    segment:"Enterprise · corp dev · PE", pricing:"Mid",
+    strength:"The only platform anchored in post-merger integration and value capture — and the founder is a 25-year PMI practitioner (ex-Schneider Electric).",
+    gap:"AI features still early; small scale and brand vs. incumbents; sourcing is thin.",
+    ainote:"Adding AI across diligence, risk and PMI — early, but pointed at the right stage." },
+  { name:"Midaxo", category:"Lifecycle platform", coverage:[1,2,3,2], ai:2,
+    segment:"Corporate development", pricing:"Mid–high",
+    strength:"Polished end-to-end ‘M&A intelligence’ platform; strong visual pipeline; real corp-dev mindshare; markets on value realization.",
+    gap:"Integration depth is lighter than the positioning implies; higher price point.",
+    ainote:"Solid analytics and intelligence framing; AI is supporting, not the headline." },
+  { name:"Devensoft", category:"Lifecycle platform", coverage:[1,2,3,2], ai:1,
+    segment:"Corp dev · enterprise", pricing:"Mid–high",
+    strength:"Comprehensive lifecycle including divestitures; real-time, auto-refreshed reporting.",
+    gap:"Lighter AI story; interface feels more enterprise-legacy.",
+    ainote:"Reporting and automation strong; little generative-AI presence yet." },
+  { name:"DealRoom", category:"Lifecycle platform", coverage:[1,2,2,1], ai:2,
+    segment:"Mid-market", pricing:"Mid",
+    strength:"Clean, fast-to-adopt UX; ‘agile M&A’ positioning; solid diligence + pipeline.",
+    gap:"Post-merger / value capture is shallow; mid-market ceiling.",
+    ainote:"Adding AI assistants for diligence and Q&A; mid-pack maturity." },
+  { name:"Datasite", category:"VDR incumbent", coverage:[1,3,1,0], ai:3,
+    segment:"Enterprise · investment banks", pricing:"High",
+    strength:"VDR category leader; deep diligence AI — auto-categorization, PII redaction (100+ types), generative-AI summaries.",
+    gap:"Pre-deal only — no integration; expensive; best AI gated to premium tiers.",
+    ainote:"Among the most mature diligence-AI stacks in the market." },
+  { name:"Intralinks", category:"VDR incumbent", coverage:[0,3,1,0], ai:2,
+    segment:"Enterprise · IB", pricing:"High",
+    strength:"Incumbent VDR scale; deep security and compliance trust.",
+    gap:"Pre-deal only; narrower AI (mostly redaction); legacy feel.",
+    ainote:"AI present but narrower than Datasite/Ansarada." },
+  { name:"Ansarada", category:"VDR incumbent", coverage:[1,3,1,0], ai:3,
+    segment:"Mid → enterprise", pricing:"Freemium → mid",
+    strength:"The most AI-forward VDR — AI deal-readiness scoring, bidder-engagement prediction, freemium funnel.",
+    gap:"Pre-deal anchored — no PMI; skews mid-market.",
+    ainote:"Leads the VDR pack on shipped, productized AI." },
+  { name:"Hebbia", category:"AI-native", coverage:[1,3,0,0], ai:3,
+    segment:"IB · PE · asset mgmt", pricing:"Enterprise",
+    strength:"Best-in-class generative AI over huge unstructured document sets; real enterprise traction in finance and diligence.",
+    gap:"A horizontal research/document-AI tool — no M&A workflow, no deal or PMI structure, no post-close data.",
+    ainote:"Among the most advanced document-AI engines; strictly pre-close." },
+  { name:"Rogo", category:"AI-native", coverage:[2,2,0,0], ai:3,
+    segment:"Investment banks · PE", pricing:"Enterprise",
+    strength:"Vertical AI analyst for dealmakers — automates screening, analysis and diligence prep; heavily funded (Series D, $300M+ total per press).",
+    gap:"Pre-close analyst tooling — no execution workflow, no integration, no outcome data.",
+    ainote:"Sourcing + diligence AI; nothing after the close." },
+  { name:"Model ML", category:"AI-native", coverage:[2,2,1,0], ai:3,
+    segment:"Financial services · dealmaking", pricing:"Enterprise",
+    strength:"Heavily funded generative AI for deal workflows ($75M Series A, per press); broad dealmaking ambitions.",
+    gap:"Concentrated pre-close; no integration or value-capture layer, no proprietary outcome data.",
+    ainote:"Generative deal AI, pre-close focused." },
+  { name:"Grata", category:"AI-native", coverage:[3,0,1,0], ai:3,
+    segment:"PE · corp dev", pricing:"Mid",
+    strength:"AI target discovery and search; strong top-of-funnel origination.",
+    gap:"Sourcing only — no execution or integration.",
+    ainote:"Search and discovery AI is its whole product — and it is strong." },
+];
+
+const SITE = {
+  "MergerWare":"https://www.mergerware.com",
+  "Midaxo":"https://www.midaxo.com",
+  "Devensoft":"https://www.devensoft.com",
+  "DealRoom":"https://dealroom.net",
+  "Datasite":"https://www.datasite.com",
+  "Intralinks":"https://www.intralinks.com",
+  "Ansarada":"https://www.ansarada.com",
+  "Hebbia":"https://www.hebbia.com",
+  "Rogo":"https://rogo.ai",
+  "Model ML":"https://www.modelml.com",
+  "Grata":"https://grata.com",
+};
+
+const heat = ["var(--h0)","var(--h1)","var(--h2)","var(--h3)"];
+const heatText = ["#9aa39e","#0c3a2c","#08362a","#ffffff"];
+const aiWord = ["None","Light","Solid","Leading"];
+let filter = "all";
+
+function cell(v){
+  return '<td class="cell" style="background:'+heat[v]+';color:'+heatText[v]+'">'+(v===0?'—':v)+'</td>';
+}
+function render(){
+  const rows = COMPANIES.filter(c => filter==="all" || c.category===filter);
+  document.getElementById('rows').innerHTML = rows.map((c,i)=>{
+    const idx = COMPANIES.indexOf(c);
+    return '<tr data-i="'+idx+'" class="'+(c.us?'us':'')+'">'+
+      '<td class="co">'+c.name+(c.us?'<span class="star">▮ you</span>':'')+
+        '<a class="ext" href="'+SITE[c.name]+'" target="_blank" rel="noopener" title="Official website" onclick="event.stopPropagation()">↗</a>'+
+        '<span class="cat">'+c.category+'</span></td>'+
+      cell(c.coverage[0])+cell(c.coverage[1])+cell(c.coverage[2])+cell(c.coverage[3])+
+      '<td class="cell" style="background:'+heat[c.ai]+';color:'+heatText[c.ai]+'">'+aiWord[c.ai]+'</td>'+
+    '</tr>';
+  }).join('');
+  document.querySelectorAll('#rows tr').forEach(tr=>{
+    tr.onclick = ()=>select(+tr.dataset.i);
+  });
+}
+function select(i){
+  const c = COMPANIES[i];
+  document.querySelectorAll('#rows tr').forEach(tr=>tr.classList.toggle('sel', +tr.dataset.i===i));
+  document.getElementById('detail').innerHTML =
+    '<h3>'+c.name+'</h3><p class="dcat">'+c.category+'</p>'+
+    '<div class="drow"><span class="k">Edge</span><span class="v"><span class="good">'+c.strength+'</span></span></div>'+
+    '<div class="drow"><span class="k">Gap</span><span class="v">'+c.gap+'</span></div>'+
+    '<div class="drow"><span class="k">AI</span><span class="v">'+c.ainote+'</span></div>'+
+    '<div class="facts"><span>Segment: <b>'+c.segment+'</b></span><span>Pricing: <b>'+c.pricing+'</b></span><span><a class="extf" href="'+SITE[c.name]+'" target="_blank" rel="noopener">Official site ↗</a></span></div>';
+}
+document.querySelectorAll('.fbtn').forEach(b=>{
+  b.onclick = ()=>{
+    document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); filter = b.dataset.f; render();
+  };
+});
+render();
+select(0);
+</script>
+</body>
+</html>

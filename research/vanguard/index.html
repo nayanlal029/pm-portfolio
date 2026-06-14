@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Advice Moments · Vanguard Personal Investor advice growth · Nayan Lal</title>
+<meta name="description" content="An outside-in product strategy and AI-PRD for growing advice adoption among self-directed Vanguard investors. Built from public sources as a discussion draft by Nayan Lal." />
+<link rel="stylesheet" href="../../assets/site.css" />
+<style>
+  /* page-local */
+  .progress{}
+  .crumb{font-size:13px;color:var(--muted)}
+  .crumb a{color:var(--muted)} .crumb a:hover{color:var(--accent-ink)}
+  .hero{padding:54px 0 22px}
+  .hero h1{max-width:16ch;margin-top:8px}
+  .hero .lede{max-width:62ch}
+  .metaline{display:flex;gap:16px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:13px;margin:18px 0 22px}
+  .metaline .b{width:4px;height:4px;border-radius:50%;background:var(--faint)}
+  .section h2{max-width:20ch}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  @media(max-width:820px){.twocol{grid-template-columns:1fr;gap:20px}}
+  .pullnum{font-family:var(--serif);font-size:40px;line-height:1;color:var(--accent);margin:0 0 6px}
+
+  /* vignette */
+  .vignette{background:linear-gradient(165deg,#0e6b54,#0a5340);color:#eaf4ef;border-radius:var(--r);padding:28px 30px}
+  .vignette .tag{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#bfe0d4;margin-bottom:12px}
+  .vignette p{color:#eaf4ef;font-family:var(--serif);font-size:18.5px;line-height:1.55;margin:0}
+  .vignette .note{font-family:var(--sans);font-size:12px;color:#cfe6dc;margin-top:14px}
+
+  /* continuum staircase */
+  .stair{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:end;margin:8px 0 6px}
+  .step{position:relative}
+  .step .bar{border-radius:10px 10px 0 0;border:1px solid var(--line);border-bottom:none;background:var(--surface-2)}
+  .step.s1 .bar{height:64px;background:var(--gold-soft);border-color:#e6d8b8}
+  .step.s2 .bar{height:104px;background:var(--accent-soft);border-color:#cfe6dc}
+  .step.s3 .bar{height:142px;background:#d8ebe2}
+  .step.s4 .bar{height:178px;background:#bfded0}
+  .step.s5 .bar{height:206px;background:#a9d3c1}
+  .step .nm{font-size:13px;font-weight:650;color:var(--ink);margin:10px 0 2px}
+  .step .ds{font-size:11.5px;color:var(--muted);line-height:1.35}
+  .gapband{position:relative;margin:14px 0 0}
+  .gapband .band{background:var(--accent-soft);border:1px dashed #9cc9ba;border-radius:10px;padding:12px 16px;font-size:13px;color:var(--accent-ink)}
+  .axis{display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);margin-top:8px}
+  @media(max-width:680px){.stair{grid-template-columns:repeat(5,1fr);gap:6px}.step .ds{display:none}.step .nm{font-size:11px}}
+
+  /* concept flow */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:6px 0}
+  .node{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:16px 16px;position:relative;box-shadow:var(--shadow-sm)}
+  .node + .node{margin-left:14px}
+  .node .n{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.08em}
+  .node h4{margin:6px 0 4px;font-family:var(--sans);font-size:14.5px;font-weight:650}
+  .node p{font-size:12.5px;margin:0;color:var(--muted)}
+  .node .arrow{position:absolute;right:-12px;top:50%;transform:translateY(-50%);z-index:2;color:var(--faint);font-size:16px}
+  .node:last-child .arrow{display:none}
+  .loopnote{font-size:12.5px;color:var(--muted);margin-top:12px;display:flex;gap:8px;align-items:center}
+  .loopnote .ic{color:var(--accent)}
+  @media(max-width:760px){.flow{grid-template-columns:1fr}.node + .node{margin-left:0;margin-top:26px}.node .arrow{right:50%;top:-21px;transform:translateX(50%) rotate(90deg)}}
+
+  /* phase cards */
+  .phase .tophdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  .phase .ph{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+  .phase .when{font-size:11.5px;color:var(--muted)}
+  .phase h3{font-size:17px;font-family:var(--sans);font-weight:650}
+  .phase ul{margin:8px 0 0;padding-left:18px}
+  .phase li{font-size:13px;color:var(--ink-soft);margin-bottom:6px}
+  .phase .deris{font-size:12px;color:var(--accent-ink);background:var(--accent-soft);border-radius:8px;padding:8px 10px;margin-top:12px}
+
+  /* tables */
+  .tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+  .tbl th,.tbl td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .tbl th{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .tbl td.metric{font-weight:650;color:var(--ink);white-space:nowrap}
+  .tbl td .th{color:var(--accent-ink);font-weight:650}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+  @media(max-width:680px){.tbl{font-size:12.5px}}
+
+  /* fail cards */
+  .fail h4{font-family:var(--sans);font-size:14px;font-weight:650;margin-bottom:8px;color:var(--danger)}
+  .fail dl{margin:0;font-size:12.5px}
+  .fail dt{font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-size:10.5px;margin-top:8px}
+  .fail dd{margin:2px 0 0;color:var(--ink-soft)}
+
+  /* metric cards */
+  .metric-card .lab{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+  .metric-card .mv{font-family:var(--serif);font-size:21px;color:var(--ink);margin:8px 0 4px}
+  .metric-card p{font-size:12.5px;margin:0;color:var(--muted)}
+
+  /* questions */
+  .q{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+  .q .num{font-family:var(--serif);color:var(--accent);font-size:18px;line-height:1.3;min-width:28px}
+  .q p{margin:0;font-size:14.5px;color:var(--ink)}
+
+  .cta{background:var(--ink);color:#eef1ee;border-radius:var(--r);padding:34px 32px;text-align:center}
+  .cta h2{color:#fff} .cta p{color:#c5ccc7;max-width:54ch;margin:0 auto 20px}
+  .cta .btn.ghost{background:rgba(255,255,255,.10);color:#fff}
+  .cta .btn.ghost:hover{background:rgba(255,255,255,.18)}
+
+  .srcs{font-size:12.5px;color:var(--muted);line-height:1.7}
+  .srcs a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <div class="brand"><a href="../../">Nayan Lal<span class="dot">.</span></a></div>
+    <nav class="navlinks">
+      <a href="#approach">Approach</a>
+      <a class="hide-sm" href="#contract">Governance</a>
+      <a href="./Nayan_Lal_Vanguard_Advice_Moments_Brief.pdf" target="_blank" rel="noopener">Brief</a>
+      <a href="./Nayan_Lal_Vanguard_Advice_Moments_PRD.pdf" target="_blank" rel="noopener">Full PRD</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="wrap hero">
+    <p class="crumb reveal"><a href="../../">Portfolio</a> · Research · Vanguard</p>
+    <p class="eyebrow reveal" style="margin-top:14px">Vanguard · Personal Investor · product strategy</p>
+    <h1 class="reveal">Advice Moments</h1>
+    <p class="lede reveal">Most of a self-directed investor's assets sit one step away from advice that could help them, and that step is almost never offered at the moment it would matter. Advice Moments is a governed personalization layer that surfaces the right advice option, to the right investor, at the right time, built as a phased and eval-governed AI system rather than a black box.</p>
+    <div class="metaline reveal">
+      <span>Outside-in product study</span><span class="b"></span>
+      <span>Built from public sources</span><span class="b"></span>
+      <span>Discussion draft · June 2026</span>
+    </div>
+    <div class="chips reveal" style="margin-bottom:22px">
+      <span class="chip accent">Advice growth</span>
+      <span class="chip">Personalization</span>
+      <span class="chip">AI / LLM</span>
+      <span class="chip">Reg BI &amp; fiduciary</span>
+      <span class="chip">Eval governance</span>
+    </div>
+    <div class="disclaimer reveal">
+      <strong>On scope and discretion.</strong> This is an independent thinking exercise built entirely from publicly available information. It is not affiliated with, endorsed by, or based on any confidential information from Vanguard. Product names are public; all figures are illustrative and directional, meant to frame a conversation rather than represent Vanguard's actual data, roadmap, or economics.
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- PROBLEM -->
+  <section class="wrap section" id="problem">
+    <p class="eyebrow reveal">The problem, in one paragraph</p>
+    <div class="twocol">
+      <div class="reveal">
+        <h2>Advice is a destination. It should be a moment.</h2>
+        <p>Vanguard is one of the world's two largest asset managers, structured to be owned by its funds and, through them, its investors. That structure makes broadening access to advice both a mission and a growth lever, and leadership has publicly framed it as a strategic priority. Yet for a self-directed investor, advice is still mostly a place you have to decide to go to: a separate tab, a separate decision, a separate sales motion.</p>
+        <p>The result is an <strong>activation gap</strong>. The investor who would benefit most, the one navigating a rollover, a windfall, a new goal, or simply more complexity than a single index fund, rarely gets a relevant, plain-language prompt at the moment the need is live. The capability to detect that moment and respond to it well, in-product and at scale, is the opportunity.</p>
+      </div>
+      <div class="reveal">
+        <div class="vignette">
+          <div class="tag">Working backwards · the moment, from the investor's side</div>
+          <p>A long-time self-directed investor logs in after changing jobs. Instead of a generic dashboard, she sees one quiet, relevant prompt: given her rollover and rising cash balance, a short, plain explanation of how Vanguard's advice options could fit, the fee, the suitability, and a one-tap way to talk to someone or start digitally. She is not sold to. She is oriented. She books a consultation in under two minutes.</p>
+          <div class="note">Illustrative customer outcome, not a real Vanguard announcement.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- CONTINUUM -->
+  <section class="wrap section" id="continuum">
+    <p class="eyebrow reveal">Where the value is</p>
+    <h2 class="reveal">The advice continuum, and the gap that matters</h2>
+    <p class="read reveal" style="margin-left:0">Vanguard already offers a continuum of advice, from low-minimum digital advice to dedicated and wealth-tier relationships. Service and cost rise from left to right. The largest pool of movable assets, and the largest unmet need, sits at the very first transition: self-directed investors who have never been matched to the next appropriate step.</p>
+
+    <div class="card reveal" style="margin-top:22px">
+      <div class="stair">
+        <div class="step s1"><div class="bar"></div><div class="nm">Self-directed</div><div class="ds">No advice relationship</div></div>
+        <div class="step s2"><div class="bar"></div><div class="nm">Digital Advisor</div><div class="ds">All-digital, low minimum</div></div>
+        <div class="step s3"><div class="bar"></div><div class="nm">Personal Advisor</div><div class="ds">Hybrid: human + digital</div></div>
+        <div class="step s4"><div class="bar"></div><div class="nm">Advisor Select</div><div class="ds">Dedicated advisor</div></div>
+        <div class="step s5"><div class="bar"></div><div class="nm">Wealth</div><div class="ds">Complex planning</div></div>
+      </div>
+      <div class="axis"><span>Lower service · lower cost</span><span>Higher service · higher cost →</span></div>
+      <div class="gapband">
+        <div class="band"><strong>Advice Moments works here.</strong> The activation gap between self-directed and the first advice step is where the most assets sit and where the next best step is least often surfaced. The goal is not to push everyone up the staircase, it is to match each investor to the step that genuinely fits, including staying self-directed.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- APPROACH / CONCEPT -->
+  <section class="wrap section" id="approach">
+    <p class="eyebrow reveal">The approach</p>
+    <h2 class="reveal">A signal becomes a governed, well-timed nudge</h2>
+    <p class="read reveal" style="margin-left:0">Advice Moments is a closed loop. It listens for moments that suggest a real need, scores whether advice would genuinely benefit this investor, delivers a suitability-checked and explainable prompt, and routes to the right next step, human or digital. Every outcome feeds evals that tune the system.</p>
+
+    <div class="flow reveal" style="margin-top:24px">
+      <div class="node"><div class="n">01 · SIGNAL</div><h4>Detect the moment</h4><p>Life events, cash build-up, goal changes, complexity signals. Privacy-respecting and opt-out aware.</p><div class="arrow">→</div></div>
+      <div class="node"><div class="n">02 · SCORE</div><h4>Eligibility &amp; benefit</h4><p>Would advice actually help here, and which tier fits? Rules first, then a propensity-and-benefit model.</p><div class="arrow">→</div></div>
+      <div class="node"><div class="n">03 · NUDGE</div><h4>Governed prompt</h4><p>Plain-language, suitability-gated, explainable, frequency-capped. Shows the fee and the fit honestly.</p><div class="arrow">→</div></div>
+      <div class="node"><div class="n">04 · ROUTE</div><h4>Consult or enroll</h4><p>One tap to a human consult or a digital start. Clean handoff with context to the advisor or flow.</p></div>
+    </div>
+    <div class="loopnote reveal"><span class="ic">↻</span> Outcomes (booked, enrolled, dismissed, complaint) feed evals that re-tune scoring, copy, and frequency, the system gets more useful and more careful over time.</div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- ROADMAP -->
+  <section class="wrap section" id="roadmap">
+    <p class="eyebrow reveal">How it ships</p>
+    <h2 class="reveal">Three phases, each shippable and each de-risking the next</h2>
+    <p class="read reveal" style="margin-left:0">Start with the version that carries no model risk and is in front of investors fastest. Earn the right to add intelligence with evidence, not ambition.</p>
+
+    <div class="grid g3 reveal" style="margin-top:24px">
+      <div class="card phase">
+        <div class="tophdr"><span class="ph">Phase 0</span><span class="when">~1 quarter</span></div>
+        <h3>Rules &amp; library</h3>
+        <ul>
+          <li>Deterministic triggers (rollover detected, cash above threshold, goal added)</li>
+          <li>A curated library of plain-language advice prompts, suitability-gated</li>
+          <li>One surface, one or two moments, strict frequency caps</li>
+        </ul>
+        <div class="deris">No ML risk. Proves the surface, the routing, and investor trust before any model exists.</div>
+      </div>
+      <div class="card phase">
+        <div class="tophdr"><span class="ph">Phase 1</span><span class="when">+1–2 quarters</span></div>
+        <h3>Predictive scoring</h3>
+        <ul>
+          <li>Propensity-and-benefit model ranks who, which tier, and when</li>
+          <li>Holdout groups measure true incremental lift, not just clicks</li>
+          <li>Suppression model to prevent over-contacting</li>
+        </ul>
+        <div class="deris">Adds precision on top of a surface investors already trust. Evals gate the release.</div>
+      </div>
+      <div class="card phase">
+        <div class="tophdr"><span class="ph">Phase 2</span><span class="when">later</span></div>
+        <h3>Generative guidance</h3>
+        <ul>
+          <li>An LLM explains the recommendation and answers follow-ups in plain language</li>
+          <li>Strictly retrieval-grounded, no performance promises, no specific security advice</li>
+          <li>Human-in-the-loop for anything approaching a recommendation boundary</li>
+        </ul>
+        <div class="deris">Highest value and highest risk, so it ships last, behind the strongest guardrails.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- BEHAVIORAL CONTRACT -->
+  <section class="wrap section" id="contract">
+    <p class="eyebrow reveal">The part most specs skip</p>
+    <h2 class="reveal">The AI is a behavioral contract, not a feature</h2>
+    <p class="read reveal" style="margin-left:0">A recommendation engine is probabilistic: the same investor can be scored differently as data shifts, and quality lives in distributions, not pass or fail. So the spec defines what good looks like in numbers, how the system fails safely, and where it must stop. In a fiduciary context this is not optional polish, it is the product.</p>
+
+    <h3 class="reveal" style="margin:26px 0 10px;font-family:var(--sans);font-size:15px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700">Eval-driven acceptance (illustrative thresholds)</h3>
+    <div class="tbl-wrap reveal">
+      <table class="tbl">
+        <thead><tr><th>What we measure</th><th>How</th><th>Release bar (illustrative)</th></tr></thead>
+        <tbody>
+          <tr><td class="metric">Suitability precision</td><td>Audited sample + rules check: was every nudge suitable for that investor?</td><td><span class="th">≥ 99.5%</span> · zero tolerance for clearly unsuitable prompts</td></tr>
+          <tr><td class="metric">Incremental benefit</td><td>Holdout vs. nudged: real lift in appropriate advice take-up</td><td><span class="th">Positive, significant</span> lift over control</td></tr>
+          <tr><td class="metric">Helpfulness</td><td>Human-rated relevance and clarity of the prompt</td><td><span class="th">≥ 4.3 / 5</span> median</td></tr>
+          <tr><td class="metric">Non-coercion / tone</td><td>LLM-as-judge + human review for pressure or hype</td><td><span class="th">0</span> coercive or misleading outputs in sample</td></tr>
+          <tr><td class="metric">Factuality (Phase 2)</td><td>Grounded-generation eval; unsupported claim rate</td><td><span class="th">&lt; 0.5%</span> unsupported claims, block on fail</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted reveal" style="margin-top:10px">Thresholds are placeholders for the conversation. The point is that each ships behind a number the team agrees on, in reporting mode first, then blocking deployment once trusted.</p>
+
+    <h3 class="reveal" style="margin:34px 0 14px;font-family:var(--sans);font-size:15px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700">Failure modes get as much attention as the happy path</h3>
+    <div class="grid g2 reveal">
+      <div class="card fail">
+        <h4>Over-nudging erodes trust</h4>
+        <dl>
+          <dt>Detect</dt><dd>Frequency caps, dismissal and complaint rates by cohort</dd>
+          <dt>Respond</dt><dd>Suppress, cool-down window, easy "show me less"</dd>
+          <dt>Alert</dt><dd>Cohort dismissal or opt-out spike trips an alarm</dd>
+          <dt>Recover</dt><dd>Auto-throttle; review copy and targeting before resuming</dd>
+        </dl>
+      </div>
+      <div class="card fail">
+        <h4>An unsuitable recommendation</h4>
+        <dl>
+          <dt>Detect</dt><dd>Pre-send suitability gate; post-hoc audit sample</dd>
+          <dt>Respond</dt><dd>Hard block at the gate; nothing unsuitable ships</dd>
+          <dt>Alert</dt><dd>Any gate bypass pages the owning team immediately</dd>
+          <dt>Recover</dt><dd>Roll back rule or model version; document and re-eval</dd>
+        </dl>
+      </div>
+      <div class="card fail">
+        <h4>Model drift over time</h4>
+        <dl>
+          <dt>Detect</dt><dd>Live score-distribution and lift monitoring vs. baseline</dd>
+          <dt>Respond</dt><dd>Fall back to Phase 0 rules if metrics breach</dd>
+          <dt>Alert</dt><dd>Drift threshold breach notifies on-call</dd>
+          <dt>Recover</dt><dd>Retrain, re-eval, staged re-release</dd>
+        </dl>
+      </div>
+      <div class="card fail">
+        <h4>Generative hallucination (Phase 2)</h4>
+        <dl>
+          <dt>Detect</dt><dd>Grounded-generation evals; unsupported-claim classifier</dd>
+          <dt>Respond</dt><dd>Constrain to retrieved facts; refuse outside scope</dd>
+          <dt>Alert</dt><dd>Unsupported-claim rate over bar blocks deploy</dd>
+          <dt>Recover</dt><dd>Tighten retrieval and prompts; human review queue</dd>
+        </dl>
+      </div>
+    </div>
+
+    <h3 class="reveal" style="margin:34px 0 14px;font-family:var(--sans);font-size:15px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700">Guardrails &amp; governance</h3>
+    <div class="card reveal">
+      <div class="chips" style="gap:10px">
+        <span class="chip accent">Reg BI / fiduciary suitability gate</span>
+        <span class="chip accent">Human-in-the-loop at recommendation boundaries</span>
+        <span class="chip">Frequency caps &amp; cool-downs</span>
+        <span class="chip">"Why am I seeing this?" explainability</span>
+        <span class="chip">One-tap opt-out, honored everywhere</span>
+        <span class="chip">No performance promises, no specific security advice</span>
+        <span class="chip">Risk-classified &amp; documented (EU AI Act-style)</span>
+        <span class="chip">Bias &amp; fairness review across cohorts</span>
+      </div>
+      <p class="small muted" style="margin:14px 0 0">Governance is designed in, not bolted on: every prompt is suitable, explainable, capped, and reversible, and the whole system is documented to stand up to a regulator and to the firm's own fiduciary standard.</p>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- METRICS -->
+  <section class="wrap section" id="metrics">
+    <p class="eyebrow reveal">How we would know it works</p>
+    <h2 class="reveal">One north star, an honest funnel, and guardrail metrics</h2>
+    <div class="grid g2 reveal" style="margin-top:22px">
+      <div class="card metric-card">
+        <div class="lab">North star</div>
+        <div class="mv">Appropriately advised assets</div>
+        <p>Assets moved to a genuinely suitable advice step, measured as true incremental lift against a holdout, never just clicks.</p>
+      </div>
+      <div class="card metric-card">
+        <div class="lab">Activation funnel</div>
+        <div class="mv">Nudge → consult → enroll</div>
+        <p>Relevant prompt shown, consultation booked or digital flow started, then enrolled. Watch drop-off at each step.</p>
+      </div>
+      <div class="card metric-card">
+        <div class="lab">Guardrail (must not regress)</div>
+        <div class="mv">Suitability · complaints · opt-outs</div>
+        <p>Suitability precision, complaint rate, and opt-out rate are release gates. Growth that moves these the wrong way is not growth.</p>
+      </div>
+      <div class="card metric-card">
+        <div class="lab">Business outcome</div>
+        <div class="mv">Retention &amp; advised mix</div>
+        <p>Advised relationships retain and deepen. Track downstream retention and the shift in advised vs. self-directed mix.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- OPEN QUESTIONS -->
+  <section class="wrap section" id="questions">
+    <p class="eyebrow reveal">What I would want to learn from the team</p>
+    <h2 class="reveal">Open questions</h2>
+    <p class="read reveal" style="margin-left:0">This is a discussion draft, so the most useful parts are the unknowns. These are the questions whose answers would change the design.</p>
+    <div class="read reveal" style="margin-left:0;margin-top:14px">
+      <div class="q"><div class="num">01</div><p>Where does the activation gap actually leak most today, the public site, the logged-in experience, onboarding, or the mobile app?</p></div>
+      <div class="q"><div class="num">02</div><p>What is the real constraint on advice growth right now, surfacing the moment, advisor capacity to absorb consults, or compliance throughput on new prompts?</p></div>
+      <div class="q"><div class="num">03</div><p>How is suitability operationalized today, and what would a pre-send suitability gate need to integrate with?</p></div>
+      <div class="q"><div class="num">04</div><p>What does "good" advice take-up look like as a number the team already trusts, so evals anchor to reality?</p></div>
+      <div class="q"><div class="num">05</div><p>How is the India product org expected to own this, end-to-end surfaces, or in partnership with US client-experience owners?</p></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="wrap section--tight">
+    <div class="cta reveal">
+      <h2>Read the full thinking</h2>
+      <p>Two companion documents: a short executive brief in PR-FAQ form, and the full AI-PRD with the behavioral contract, failure modes, and governance written out.</p>
+      <div class="btns" style="justify-content:center">
+        <a class="btn primary" href="./Nayan_Lal_Vanguard_Advice_Moments_Brief.pdf" target="_blank" rel="noopener">Executive brief (PDF)</a>
+        <a class="btn ghost" href="./Nayan_Lal_Vanguard_Advice_Moments_PRD.pdf" target="_blank" rel="noopener">Full AI-PRD (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section--tight">
+    <p class="eyebrow reveal">Sources &amp; notes</p>
+    <p class="srcs read reveal" style="margin-left:0">
+      Built from public information about Vanguard's business and advice offerings, its investor-owned structure, and public statements on broadening access to advice; the U.S. SEC's Regulation Best Interest; the EU AI Act's risk-based approach to AI governance; and current public practice on AI product evals and failure-mode design. Specific figures and thresholds in this study are illustrative and directional. Independent work by Nayan Lal, not affiliated with or endorsed by Vanguard, and not based on any confidential information.
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p style="color:var(--ink);font-family:var(--serif);font-size:16px;margin-bottom:10px">Nayan Lal</p>
+    <p>AI Product Manager · <a href="mailto:nayanlal1909@gmail.com">nayanlal1909@gmail.com</a> · <a href="https://www.linkedin.com/in/nayan-lal" target="_blank" rel="noopener">linkedin.com/in/nayan-lal</a> · <a href="../../">Back to portfolio</a></p>
+    <p>Discussion draft · shared by link · kept out of search engines.</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+      els.forEach(function(e){io.observe(e)});
+    } else { els.forEach(function(e){e.classList.add('in')}); }
+    var bar=document.getElementById('progress');
+    function onScroll(){
+      var h=document.documentElement;
+      var sc=(h.scrollTop||document.body.scrollTop);
+      var max=(h.scrollHeight-h.clientHeight)||1;
+      bar.style.width=(sc/max*100)+'%';
+    }
+    document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  })();
+</script>
+</body>
+</html>
