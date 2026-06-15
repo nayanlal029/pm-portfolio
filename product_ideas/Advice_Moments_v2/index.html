@@ -12,6 +12,17 @@
   .lwrap{max-width:1460px;margin:0 auto;padding:0 clamp(20px,3.6vw,56px)}
   section[id]{scroll-margin-top:80px}
 
+  /* about-me dropdown */
+  .menu{position:relative}
+  .menubtn{font-family:var(--sans);font-size:14.5px;font-weight:550;color:var(--ink-soft);background:none;border:none;cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:5px}
+  .menubtn:hover{color:var(--accent-ink)}
+  .menubtn .cav{font-size:10px;transition:transform .15s}
+  .menu.open .menubtn .cav{transform:rotate(180deg)}
+  .menupop{position:absolute;right:0;top:calc(100% + 12px);background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:7px;min-width:172px;display:none;flex-direction:column;z-index:60}
+  .menu.open .menupop{display:flex}
+  .menupop a{font-size:14px;font-weight:550;color:var(--ink-soft);padding:9px 12px;border-radius:8px}
+  .menupop a:hover{background:var(--surface-2);color:var(--accent-ink)}
+
   /* hero, full-bleed, filled */
   .herowrap{background:
      radial-gradient(900px 520px at 88% 8%, #eef6f1 0%, rgba(238,246,241,0) 60%),
@@ -158,10 +169,16 @@
   <div class="lwrap bar">
     <div class="brand"><a href="#top">Nayan Lal<span class="dot">.</span></a></div>
     <nav class="navlinks">
-      <a href="#jump">The study</a>
-      <a class="hide-sm" href="#" data-form>Brief</a>
-      <a href="https://www.linkedin.com/in/nayan-lal" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:nayanlal1909@gmail.com">Contact</a>
+      <a href="#jump">The Study</a>
+      <a href="#" data-form>Brief</a>
+      <div class="menu" id="aboutMenu">
+        <button class="menubtn" type="button" aria-haspopup="true" aria-expanded="false">About me <span class="cav">&#9662;</span></button>
+        <div class="menupop">
+          <a href="./Nayan_Lal_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+          <a href="https://www.linkedin.com/in/nayan-lal" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:nayanlal1909@gmail.com">Contact</a>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
@@ -473,6 +490,14 @@
       var body='Name: '+n+'%0D%0AEmail: '+em+'%0D%0ACompany: '+co+'%0D%0A%0D%0A'+ms;
       window.location.href='mailto:nayanlal1909@gmail.com?subject='+encodeURIComponent('Advice Moments: brief request')+'&body='+body;
     });
+
+    // about-me dropdown
+    var aMenu=document.getElementById('aboutMenu');
+    if(aMenu){
+      var aBtn=aMenu.querySelector('.menubtn');
+      aBtn.addEventListener('click',function(e){e.stopPropagation();var o=aMenu.classList.toggle('open');aBtn.setAttribute('aria-expanded',o?'true':'false');});
+      document.addEventListener('click',function(e){if(!aMenu.contains(e.target)){aMenu.classList.remove('open');aBtn.setAttribute('aria-expanded','false');}});
+    }
   })();
 </script>
 </body>
