@@ -18,7 +18,7 @@ A self-contained, interactive product-strategy page by **Nayan Lal**, AI Product
   - **Marketing-to-advice funnel** — MGL → MQL → advisor call → implementations (DA/PA/PAS), with a reach slider
   - The AI as a **behavioral contract** (governance, eval gates)
   - **Retention** — churn falls as advice deepens
-- **Request the brief** — a lightweight form (name, email, company) that opens a prefilled email; links to my CV.
+- **Gated access** — the executive brief and CV open after a short form (name, email, company); the full AI-PRD is sent on request by email (mailto). Marketing funnel uses representative, intentionally steep numbers (reach up to 2M; human advice ~0.01%, Digital Advisor self-serve ~1%).
 
 ## Notes
 

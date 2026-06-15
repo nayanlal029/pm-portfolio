@@ -170,11 +170,11 @@
     <div class="brand"><a href="#top">Nayan Lal<span class="dot">.</span></a></div>
     <nav class="navlinks">
       <a href="#jump">The Study</a>
-      <a href="#" data-form>Brief</a>
+      <a href="#" data-form data-mode="brief">Brief</a>
       <div class="menu" id="aboutMenu">
         <button class="menubtn" type="button" aria-haspopup="true" aria-expanded="false">About me <span class="cav">&#9662;</span></button>
         <div class="menupop">
-          <a href="./Nayan_Lal_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+          <a href="#" data-form data-mode="cv">CV</a>
           <a href="https://www.linkedin.com/in/nayan-lal" target="_blank" rel="noopener">LinkedIn</a>
           <a href="mailto:nayanlal1909@gmail.com">Contact</a>
         </div>
@@ -196,7 +196,7 @@
           <p class="hsub">An outside-in product strategy for growing advice adoption among self-directed investors: a governed personalization layer that surfaces the right advice step at the right moment, built as a phased, eval-governed AI system rather than a black box.</p>
           <div class="btns">
             <a class="btn primary" href="#jump">Explore the thinking →</a>
-            <button class="btn ghost" type="button" data-form>Request the brief</button>
+            <button class="btn ghost" type="button" data-form data-mode="brief">Read the executive brief</button>
           </div>
         </div>
         <div class="hright reveal">
@@ -255,13 +255,13 @@
 
     <div class="acc reveal">
       <details id="d-problem" open>
-        <summary><span class="ix">01</span><span class="st">The problem: advice is a destination, not a moment</span><span class="sd">read</span><span class="pl">+</span></summary>
+        <summary><span class="ix">01</span><span class="st">The problem: advice is a destination, not a moment</span><span class="pl">+</span></summary>
         <div class="panel">
           <p>For a self-directed investor, advice is still a separate decision and motion. The investor who would benefit most, navigating a rollover, a windfall, a new goal, or simply rising complexity, rarely gets a relevant, plain-language prompt while the need is live. That activation gap, at the first $50K step on the continuum above, is the opportunity: detect the moment and respond to it well, in-product, at scale, and within fiduciary guardrails.</p>
         </div>
       </details>
       <details id="d-sim">
-        <summary><span class="ix">02</span><span class="st">A moment, simulated</span><span class="sd">interactive</span><span class="pl">+</span></summary>
+        <summary><span class="ix">02</span><span class="st">A moment, simulated</span><span class="pl">+</span></summary>
         <div class="panel">
           <p>Drag the balance and pick a life event. Watch eligibility cross the real public thresholds, and see the governed nudge fire, or deliberately suppress itself below the benefit threshold.</p>
           <div class="sim">
@@ -298,15 +298,16 @@
         </div>
       </details>
       <details id="d-funnel">
-        <summary><span class="ix">03</span><span class="st">Marketing-to-advice funnel</span><span class="sd">interactive</span><span class="pl">+</span></summary>
+        <summary><span class="ix">03</span><span class="st">Marketing-to-advice funnel (representative)</span><span class="pl">+</span></summary>
         <div class="panel">
-          <p>The operating view in the team's own language: how marketing-sourced demand becomes advised relationships. Drag the campaign reach and watch each stage scale.</p>
+          <p>A representative view in the team's own language. Real advice funnels are far steeper than the bars suggest: reach is enormous, conversion to human advice (PA/PAS) is a fraction of a percent, while Digital Advisor self-serve converts far higher. Drag the reach to see it move.</p>
           <div class="fwrap">
             <div class="fctrl">
               <label>Campaign reach</label>
-              <div class="rv" id="reachVal">100,000</div>
-              <input type="range" id="reach" min="20" max="250" value="100" aria-label="Campaign reach" />
-              <div class="note"><b>MGL</b> (marketing-generated lead) → <b>MQL</b> (qualified) → inbound advisor call → <b>implementations</b>, split across <b>DA / PA / PAS</b>. This is the kind of campaign-measurement view I have built and instrumented before, pulling from data tables into one decision layer for measurement plans and campaign performance.</div>
+              <div class="rv" id="reachVal">2,000,000</div>
+              <input type="range" id="reach" min="100" max="2000" value="2000" aria-label="Campaign reach" />
+              <div class="ticks"><span>100K</span><span>500K</span><span>1M</span><span>2M</span></div>
+              <div class="note"><b>MGL</b> (marketing-generated lead) → <b>MQL</b> (qualified) → inbound advisor call → <b>implementations</b> (DA / PA / PAS). Human advice (PA/PAS) converts at roughly <b>0.01%</b> of reach; Digital Advisor self-serve runs far higher (~1%). Segments can overlap. Bar widths are schematic; the conversion is intentionally steep. This is the kind of campaign-measurement view I have built and instrumented before, pulling from data tables for measurement plans and campaign performance.</div>
             </div>
             <div>
               <div class="funnel" id="funnelBars"></div>
@@ -316,7 +317,7 @@
         </div>
       </details>
       <details id="d-gov">
-        <summary><span class="ix">04</span><span class="st">The AI as a behavioral contract</span><span class="sd">read</span><span class="pl">+</span></summary>
+        <summary><span class="ix">04</span><span class="st">The AI as a behavioral contract</span><span class="pl">+</span></summary>
         <div class="panel">
           <p>A recommendation engine is probabilistic, so the spec defines what good looks like in numbers, how it fails safely, and where it must stop. In a fiduciary context that is not optional polish, it is the product. Release gates (illustrative): suitability precision &ge; 99.5%, significant incremental benefit vs. a holdout, zero coercive outputs, factuality blocks on fail.</p>
           <div class="gv">
@@ -332,7 +333,7 @@
         </div>
       </details>
       <details id="d-churn">
-        <summary><span class="ix">05</span><span class="st">Why it compounds: retention</span><span class="sd">visual</span><span class="pl">+</span></summary>
+        <summary><span class="ix">05</span><span class="st">Why it compounds: retention</span><span class="pl">+</span></summary>
         <div class="panel">
           <p>The case for advice is not only growth, it is durability. Advised relationships churn far less than self-directed accounts, so every appropriate match also lifts retention. A churn-propensity model can flag at-risk relationships for proactive outreach.</p>
           <div class="churn">
@@ -348,10 +349,10 @@
     </div>
 
     <div class="btns reveal" style="margin-top:30px">
-      <button class="btn primary" type="button" data-form>Request the brief &amp; full PRD</button>
-      <a class="btn line" href="./Nayan_Lal_CV.pdf" target="_blank" rel="noopener">My CV</a>
+      <button class="btn primary" type="button" data-form data-mode="brief">Executive brief · download</button>
+      <button class="btn line" type="button" data-form data-mode="prd">Full AI-PRD · on request</button>
     </div>
-    <p class="small muted reveal" style="margin-top:14px">The full written study (strategy brief and AI-PRD) is being finalised. Request a copy and I will send it across.</p>
+    <p class="small muted reveal" style="margin-top:14px">The executive brief is available now (a couple of details and it opens). The full AI-PRD is sent on request by email. My CV is under "About me".</p>
   </section>
 </main>
 
@@ -367,8 +368,8 @@
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Request the brief">
   <div class="modal-card">
     <button class="x" type="button" id="modalX" aria-label="Close">&times;</button>
-    <h3>Request the brief</h3>
-    <p>Leave your details and I will send the executive brief and full AI-PRD across by email.</p>
+    <h3 id="mTitle">Get the executive brief</h3>
+    <p id="mDesc">A couple of details and the brief opens right away.</p>
     <form id="reqForm">
       <label for="rfName">Name</label>
       <input id="rfName" type="text" required autocomplete="name" />
@@ -376,11 +377,13 @@
       <input id="rfEmail" type="email" required autocomplete="email" />
       <label for="rfCo">Company</label>
       <input id="rfCo" type="text" autocomplete="organization" />
-      <label for="rfMsg">Anything you would like me to address? (optional)</label>
-      <textarea id="rfMsg"></textarea>
-      <button class="btn primary" type="submit" style="width:100%">Send request →</button>
+      <div id="rfMsgWrap">
+        <label for="rfMsg">Anything you would like me to address? (optional)</label>
+        <textarea id="rfMsg"></textarea>
+      </div>
+      <button class="btn primary" type="submit" style="width:100%" id="mSubmit">Open the brief →</button>
     </form>
-    <p class="cvline">Prefer to skim my background first? <a href="./Nayan_Lal_CV.pdf" target="_blank" rel="noopener">Download my CV (PDF)</a></p>
+    <p class="cvline" id="mFoot">Built from public sources as a discussion draft.</p>
   </div>
 </div>
 
@@ -459,14 +462,22 @@
       var reachVal=document.getElementById('reachVal'),fBars=document.getElementById('funnelBars'),fSplit=document.getElementById('funnelSplit');
       function comma(n){return Math.round(n).toLocaleString('en-US');}
       function rf(){
-        var mgl=(+reach.value)*1000, mql=mgl*0.28, call=mql*0.32, impl=call*0.66;
-        var stages=[{l:'MGL',s:'Marketing-generated leads',v:mgl,w:100,c:''},{l:'MQL',s:'Qualified leads',v:mql,w:74,c:'28% qualify'},{l:'Inbound advisor call',s:'Engaged with advice',v:call,w:52,c:'32% of MQL call'},{l:'Implementations',s:'Converted to advised',v:impl,w:34,c:'66% of calls convert'}];
-        reachVal.textContent=comma(mgl);
+        var R=(+reach.value)*1000;
+        var mgl=R*0.02, mql=mgl*0.12, call=mql*0.18, impl=call*0.25;
+        var da=R*0.01, pa=impl*0.7, pas=impl*0.3;
+        reachVal.textContent=comma(R);
+        var stages=[
+          {l:'Reach',s:'Audience reached',v:R,w:100,c:''},
+          {l:'MGL',s:'Marketing-generated leads',v:mgl,w:80,c:'~2.0% respond'},
+          {l:'MQL',s:'Qualified leads',v:mql,w:60,c:'~12% qualify'},
+          {l:'Inbound advisor call',s:'Engaged with advice',v:call,w:42,c:'~18% call'},
+          {l:'Implementations · PA + PAS',s:'Converted to human advice',v:impl,w:26,c:'~25% implement'}
+        ];
         var html='';
         stages.forEach(function(st,i){if(i>0)html+='<div class="fconv">&darr; <b>'+st.c+'</b></div>';html+='<div class="fstage" style="width:'+st.w+'%"><span class="fl">'+st.l+'<span class="sub">'+st.s+'</span></span><span class="fv">'+comma(st.v)+'</span></div>';});
+        html+='<div class="fconv">human advice &asymp; <b>'+(impl/R*100).toFixed(3)+'%</b> of reach</div>';
         fBars.innerHTML=html;
-        var da=impl*0.58,pa=impl*0.32,pas=impl*0.10;
-        fSplit.innerHTML='<div class="sp"><div class="t">DA</div><div class="n">'+comma(da)+'</div><div class="d">Digital Advisor</div></div><div class="sp"><div class="t">PA</div><div class="n">'+comma(pa)+'</div><div class="d">Personal Advisor</div></div><div class="sp"><div class="t">PAS</div><div class="n">'+comma(pas)+'</div><div class="d">Advisor Select</div></div>';
+        fSplit.innerHTML='<div class="sp"><div class="t">DA</div><div class="n">'+comma(da)+'</div><div class="d">Digital · self-serve ~1%</div></div><div class="sp"><div class="t">PA</div><div class="n">'+comma(pa)+'</div><div class="d">Personal Advisor</div></div><div class="sp"><div class="t">PAS</div><div class="n">'+comma(pas)+'</div><div class="d">Advisor Select</div></div>';
       }
       reach.addEventListener('input',rf);rf();
     }
@@ -476,20 +487,33 @@
       a.addEventListener('click',function(e){e.preventDefault();var t=document.getElementById(a.getAttribute('data-jump'));if(t){t.open=true;window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});}});
     });
 
-    // request form modal
-    var modal=document.getElementById('modal');
-    [].slice.call(document.querySelectorAll('[data-form]')).forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();modal.classList.add('open');});});
+    // request / gate modal (brief + cv open the file; prd emails me)
+    var modal=document.getElementById('modal'), mMode='brief';
+    var mTitle=document.getElementById('mTitle'),mDesc=document.getElementById('mDesc'),mSubmit=document.getElementById('mSubmit'),mFoot=document.getElementById('mFoot'),rfMsgWrap=document.getElementById('rfMsgWrap');
+    var MODES={
+      brief:{t:'Get the executive brief',d:'A couple of details and the brief opens right away.',s:'Open the brief →',note:false,foot:'Built from public sources as a discussion draft.'},
+      cv:{t:'See my CV',d:'A couple of details and my CV opens right away.',s:'Open the CV →',note:false,foot:'Thanks for taking a look.'},
+      prd:{t:'Request the full AI-PRD',d:'Leave your details and I will email you the full AI-PRD.',s:'Send request →',note:true,foot:'I will reply from nayanlal1909@gmail.com.'}
+    };
+    function openModal(m){mMode=MODES[m]?m:'brief';var c=MODES[mMode];mTitle.textContent=c.t;mDesc.textContent=c.d;mSubmit.textContent=c.s;mFoot.textContent=c.foot;rfMsgWrap.style.display=c.note?'block':'none';if(typeof aMenu!=='undefined'&&aMenu)aMenu.classList.remove('open');modal.classList.add('open');}
+    [].slice.call(document.querySelectorAll('[data-form]')).forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();openModal(b.getAttribute('data-mode')||'brief');});});
     document.getElementById('modalX').addEventListener('click',function(){modal.classList.remove('open');});
     modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.remove('open');});
     document.getElementById('reqForm').addEventListener('submit',function(e){
       e.preventDefault();
-      var n=encodeURIComponent(document.getElementById('rfName').value),
-          em=encodeURIComponent(document.getElementById('rfEmail').value),
-          co=encodeURIComponent(document.getElementById('rfCo').value),
-          ms=encodeURIComponent(document.getElementById('rfMsg').value);
-      var body='Name: '+n+'%0D%0AEmail: '+em+'%0D%0ACompany: '+co+'%0D%0A%0D%0A'+ms;
-      window.location.href='mailto:nayanlal1909@gmail.com?subject='+encodeURIComponent('Advice Moments: brief request')+'&body='+body;
+      if(mMode==='prd'){
+        var n=encodeURIComponent(document.getElementById('rfName').value),em=encodeURIComponent(document.getElementById('rfEmail').value),co=encodeURIComponent(document.getElementById('rfCo').value),ms=encodeURIComponent(document.getElementById('rfMsg').value);
+        window.location.href='mailto:nayanlal1909@gmail.com?subject='+encodeURIComponent('Advice Moments: AI-PRD request')+'&body=Name: '+n+'%0D%0AEmail: '+em+'%0D%0ACompany: '+co+'%0D%0A%0D%0A'+ms;
+      } else {
+        var url=mMode==='cv'?'./Nayan_Lal_CV.pdf':'./Advice_Moments_Brief.pdf';
+        modal.classList.remove('open');
+        var w=window.open(url,'_blank'); if(!w){window.location.href=url;}
+      }
     });
+
+    // accordion: opening one closes the others
+    var accs=[].slice.call(document.querySelectorAll('.acc details'));
+    accs.forEach(function(d){d.addEventListener('toggle',function(){if(d.open){accs.forEach(function(o){if(o!==d)o.open=false;});}});});
 
     // about-me dropdown
     var aMenu=document.getElementById('aboutMenu');
