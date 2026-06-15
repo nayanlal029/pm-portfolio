@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex" />
 <title>Advice Moments · Vanguard Personal Investor advice growth · Nayan Lal</title>
 <meta name="description" content="An outside-in product strategy and AI-PRD for growing advice adoption among self-directed Vanguard investors. Built from public sources as a discussion draft by Nayan Lal." />
-<link rel="stylesheet" href="../../assets/site.css" />
+<link rel="stylesheet" href="./site-v1.css" />
 <style>
   /* page-local */
   .progress{}
@@ -156,68 +156,19 @@
   .nudge .gate{font-size:11px;color:var(--accent-ink);background:var(--accent-soft);padding:9px 14px;border-top:1px solid #d8ebe2}
   .nudge.block .gate{color:var(--ink-soft);background:var(--surface-2);border-top-color:var(--line)}
   .simnote{font-size:11.5px;color:var(--muted);margin-top:10px}
-
-  /* tagline */
-  .tagline{font-family:var(--serif);font-size:clamp(19px,2.1vw,25px);color:var(--accent-ink);font-style:italic;margin:0 0 20px;max-width:30ch}
-
-  /* funnel */
-  .fwrap{display:grid;grid-template-columns:260px 1fr;gap:30px;align-items:start}
-  @media(max-width:820px){.fwrap{grid-template-columns:1fr;gap:20px}}
-  .fctrl label{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-  .fctrl .rv{font-family:var(--serif);font-size:30px;color:var(--ink);margin:6px 0 2px;line-height:1}
-  .fctrl input[type=range]{width:100%;accent-color:var(--accent);margin:12px 0 4px;cursor:pointer}
-  .fctrl .note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.5}
-  .fctrl .note b{color:var(--accent-ink)}
-  .funnel{display:flex;flex-direction:column;align-items:center}
-  .fstage{width:100%;display:flex;align-items:center;justify-content:space-between;
-    background:linear-gradient(180deg,#e6f2ec,#dceee6);border:1px solid #cfe6dc;border-radius:10px;
-    padding:13px 20px;transition:.15s;cursor:default}
-  .fstage:hover{background:#d2ebe1;border-color:#a9d3c1}
-  .fstage .fl{font-size:13.5px;font-weight:650;color:var(--accent-ink)}
-  .fstage .fl .sub{display:block;font-size:10.5px;font-weight:600;color:var(--muted);letter-spacing:.03em}
-  .fstage .fv{font-family:var(--serif);font-size:19px;color:var(--ink);white-space:nowrap}
-  .fconv{font-size:11.5px;color:var(--muted);padding:6px 0}
-  .fconv b{color:var(--accent-ink)}
-  .fsplit{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;margin-top:10px}
-  .fsplit .sp{border:1px solid var(--line);border-radius:10px;padding:11px 12px;text-align:center;background:var(--surface)}
-  .fsplit .sp .t{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.04em}
-  .fsplit .sp .n{font-family:var(--serif);font-size:18px;color:var(--ink);margin-top:3px}
-  .fsplit .sp .d{font-size:10.5px;color:var(--muted);margin-top:2px}
-
-  /* churn */
-  .churn{display:flex;flex-direction:column;gap:13px;margin-top:6px}
-  .crow{display:grid;grid-template-columns:148px 1fr 50px;align-items:center;gap:16px}
-  .crow .cl{font-size:13.5px;font-weight:650;color:var(--ink)}
-  .crow .ctrack{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;height:16px;overflow:hidden}
-  .crow .cfill{height:100%;background:linear-gradient(90deg,#0a5340,#7cb8a1);border-radius:999px}
-  .crow .cv{font-size:13.5px;font-weight:700;color:var(--accent-ink);text-align:right}
-  @media(max-width:560px){.crow{grid-template-columns:104px 1fr 42px;gap:10px}}
 </style>
 </head>
 <body>
 <div class="progress" id="progress"></div>
 
-<nav class="dotnav" id="dotnav" aria-label="Section navigation">
-  <a href="#problem"><span class="lab">Problem</span><span class="dot"></span></a>
-  <a href="#continuum"><span class="lab">Continuum</span><span class="dot"></span></a>
-  <a href="#approach"><span class="lab">Approach</span><span class="dot"></span></a>
-  <a href="#try"><span class="lab">Simulator</span><span class="dot"></span></a>
-  <a href="#funnel"><span class="lab">Funnel</span><span class="dot"></span></a>
-  <a href="#roadmap"><span class="lab">Roadmap</span><span class="dot"></span></a>
-  <a href="#contract"><span class="lab">Governance</span><span class="dot"></span></a>
-  <a href="#metrics"><span class="lab">Metrics</span><span class="dot"></span></a>
-  <a href="#churn"><span class="lab">Retention</span><span class="dot"></span></a>
-  <a href="#questions"><span class="lab">Questions</span><span class="dot"></span></a>
-</nav>
-
 <header class="site-header">
   <div class="wrap bar">
-    <div class="brand"><a href="../../">Nayan Lal<span class="dot">.</span></a></div>
+    <div class="brand"><a href="../../../">Nayan Lal<span class="dot">.</span></a></div>
     <nav class="navlinks">
       <a href="#approach">Approach</a>
       <a class="hide-sm" href="#contract">Governance</a>
-      <a href="./Nayan_Lal_Vanguard_Advice_Moments_Brief.pdf" target="_blank" rel="noopener">Brief</a>
-      <a href="./Nayan_Lal_Vanguard_Advice_Moments_PRD.pdf" target="_blank" rel="noopener">Full PRD</a>
+      <a href="../Nayan_Lal_Vanguard_Advice_Moments_Brief.pdf" target="_blank" rel="noopener">Brief</a>
+      <a href="../Nayan_Lal_Vanguard_Advice_Moments_PRD.pdf" target="_blank" rel="noopener">Full PRD</a>
     </nav>
   </div>
 </header>
@@ -225,10 +176,9 @@
 <main>
   <!-- HERO -->
   <section class="wrap hero">
-    <p class="crumb reveal"><a href="../../">Portfolio</a> · Research · Vanguard</p>
+    <p class="crumb reveal"><a href="../../../">Portfolio</a> · Research · Vanguard</p>
     <p class="eyebrow reveal" style="margin-top:14px">Vanguard · Personal Investor · product strategy</p>
     <h1 class="reveal">Advice Moments</h1>
-    <p class="tagline reveal">Advice, the moment an investor crosses into the threshold.</p>
     <p class="lede reveal">Most of a self-directed investor's assets sit one step away from advice that could help them, and that step is almost never offered at the moment it would matter. Advice Moments is a governed personalization layer that surfaces the right advice option, to the right investor, at the right time, built as a phased and eval-governed AI system rather than a black box.</p>
     <div class="metaline reveal">
       <span>Outside-in product study</span><span class="b"></span>
@@ -249,10 +199,9 @@
       <div class="s"><div class="v">0.07%</div><div class="l">Avg fund fee vs 0.44% industry</div></div>
       <div class="s"><div class="v">5–10×</div><div class="l">Advice fees vs fund fees: the lever</div></div>
     </div>
-    <details class="disc-c reveal">
-      <summary>On scope &amp; discretion (independent, public sources only)</summary>
-      <div class="body">This is an independent thinking exercise built entirely from publicly available information (Vanguard's own advice pages, press, and analyst coverage). It is not affiliated with, endorsed by, or based on any confidential information from Vanguard. Thresholds and fees shown are public; proportions and any thresholds marked illustrative are directional, meant to frame a conversation rather than represent Vanguard's actual data, roadmap, or economics.</div>
-    </details>
+    <div class="disclaimer reveal">
+      <strong>On scope and discretion.</strong> This is an independent thinking exercise built entirely from publicly available information (Vanguard's own advice pages, press, and analyst coverage). It is not affiliated with, endorsed by, or based on any confidential information from Vanguard. Thresholds and fees shown are public; proportions and any thresholds marked illustrative are directional, meant to frame a conversation rather than represent Vanguard's actual data, roadmap, or economics.
+    </div>
   </section>
 
   <hr class="hr" />
@@ -292,14 +241,7 @@
           <circle class="ring" data-t="2" cx="160" cy="160" r="90"  fill="#aed4c3"></circle>
           <circle class="ring" data-t="3" cx="160" cy="160" r="58"  fill="#5fa389"></circle>
           <circle class="ring" data-t="4" cx="160" cy="160" r="30"  fill="#0e6b54"></circle>
-          <g style="pointer-events:none" font-family="-apple-system,Segoe UI,Roboto,sans-serif" text-anchor="middle" font-weight="700">
-            <text x="160" y="36" font-size="12" fill="#6e5a2a">SD</text>
-            <text x="160" y="64" font-size="12" fill="#1b4a3b">DA</text>
-            <text x="160" y="92" font-size="12" fill="#0a5340">PA</text>
-            <text x="160" y="119" font-size="11" fill="#ffffff">PA(S)</text>
-            <text x="160" y="158" font-size="11" fill="#ffffff">WM</text>
-            <text x="160" y="172" font-size="8" fill="#cfe6dc" font-weight="600">$5M+</text>
-          </g>
+          <text x="160" y="164" text-anchor="middle" font-size="11" fill="#ffffff" font-weight="700" style="pointer-events:none">$5M+</text>
         </svg>
         <div>
           <div class="leg" id="leg">
@@ -356,7 +298,6 @@
             <button data-e="cash">Cash building up</button>
             <button data-e="goal">New goal added</button>
             <button data-e="retire">Nearing retirement</button>
-            <button data-e="tlh">Taxable gains this year</button>
           </div>
           <div class="elig" id="elig"></div>
         </div>
@@ -373,30 +314,6 @@
             <div class="gate" id="nGate"></div>
           </div>
           <div class="simnote">Illustrative interaction. Thresholds and fees are public (investor.vanguard.com); the prompt copy is a mock, not a Vanguard message.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="hr" />
-
-  <!-- FUNNEL -->
-  <section class="wrap section" id="funnel">
-    <p class="eyebrow reveal">The operating view</p>
-    <h2 class="reveal">From marketing-sourced demand to advised relationships</h2>
-    <p class="read reveal" style="margin-left:0">A moment only matters if the pipeline behind it converts. This is the marketing-to-advice funnel in the team's own language, the measurement view a campaign dashboard would track. Drag the campaign reach and watch each stage scale.</p>
-
-    <div class="card reveal" style="margin-top:22px">
-      <div class="fwrap">
-        <div class="fctrl">
-          <label>Campaign reach</label>
-          <div class="rv" id="reachVal">100,000</div>
-          <input type="range" id="reach" min="20" max="250" value="100" aria-label="Campaign reach" />
-          <div class="note">Illustrative model in marketing terms: <b>MGL</b> (marketing-generated lead) → <b>MQL</b> (qualified) → inbound advisor call → <b>implementations</b>, split across <b>DA / PA / PAS</b>. This is the kind of campaign-measurement view I have built and instrumented before, pulling from data tables into one decision layer for measurement plans and campaign performance.</div>
-        </div>
-        <div>
-          <div class="funnel" id="funnelBars"></div>
-          <div class="fsplit" id="funnelSplit"></div>
         </div>
       </div>
     </div>
@@ -555,26 +472,6 @@
 
   <hr class="hr" />
 
-  <!-- CHURN -->
-  <section class="wrap section" id="churn">
-    <p class="eyebrow reveal">Why it compounds</p>
-    <h2 class="reveal">Advice deepens retention</h2>
-    <p class="read reveal" style="margin-left:0">The case for advice is not only growth, it is durability. Advised relationships churn far less than self-directed accounts, so every appropriate match also lifts retention. A churn-propensity model can flag at-risk relationships for proactive outreach before they leave, a natural companion to Advice Moments.</p>
-
-    <div class="card reveal" style="margin-top:22px">
-      <div class="churn">
-        <div class="crow"><span class="cl">Self-directed</span><div class="ctrack"><div class="cfill" style="width:100%"></div></div><span class="cv">~9%</span></div>
-        <div class="crow"><span class="cl">Digital Advisor</span><div class="ctrack"><div class="cfill" style="width:67%"></div></div><span class="cv">~6%</span></div>
-        <div class="crow"><span class="cl">Personal Advisor</span><div class="ctrack"><div class="cfill" style="width:44%"></div></div><span class="cv">~4%</span></div>
-        <div class="crow"><span class="cl">Advisor Select</span><div class="ctrack"><div class="cfill" style="width:33%"></div></div><span class="cv">~3%</span></div>
-        <div class="crow"><span class="cl">Wealth Mgmt</span><div class="ctrack"><div class="cfill" style="width:22%"></div></div><span class="cv">~2%</span></div>
-      </div>
-      <p class="small muted" style="margin-top:16px">Illustrative annual attrition by tier, directional. The pattern (deeper advice, lower churn) is well established; exact rates would come from the team's data. Retention modeling and churn scoring are part of my prior analytics work.</p>
-    </div>
-  </section>
-
-  <hr class="hr" />
-
   <!-- OPEN QUESTIONS -->
   <section class="wrap section" id="questions">
     <p class="eyebrow reveal">What I would want to learn from the team</p>
@@ -595,8 +492,8 @@
       <h2>Read the full thinking</h2>
       <p>Two companion documents: a short executive brief in PR-FAQ form, and the full AI-PRD with the behavioral contract, failure modes, and governance written out.</p>
       <div class="btns" style="justify-content:center">
-        <a class="btn primary" href="./Nayan_Lal_Vanguard_Advice_Moments_Brief.pdf" target="_blank" rel="noopener">Executive brief (PDF)</a>
-        <a class="btn ghost" href="./Nayan_Lal_Vanguard_Advice_Moments_PRD.pdf" target="_blank" rel="noopener">Full AI-PRD (PDF)</a>
+        <a class="btn primary" href="../Nayan_Lal_Vanguard_Advice_Moments_Brief.pdf" target="_blank" rel="noopener">Executive brief (PDF)</a>
+        <a class="btn ghost" href="../Nayan_Lal_Vanguard_Advice_Moments_PRD.pdf" target="_blank" rel="noopener">Full AI-PRD (PDF)</a>
       </div>
     </div>
   </section>
@@ -612,7 +509,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <p style="color:var(--ink);font-family:var(--serif);font-size:16px;margin-bottom:10px">Nayan Lal</p>
-    <p>AI Product Manager · <a href="mailto:nayanlal1909@gmail.com">nayanlal1909@gmail.com</a> · <a href="https://www.linkedin.com/in/nayan-lal" target="_blank" rel="noopener">linkedin.com/in/nayan-lal</a> · <a href="../../">Back to portfolio</a></p>
+    <p>AI Product Manager · <a href="mailto:nayanlal1909@gmail.com">nayanlal1909@gmail.com</a> · <a href="https://www.linkedin.com/in/nayan-lal" target="_blank" rel="noopener">linkedin.com/in/nayan-lal</a> · <a href="../../../">Back to portfolio</a></p>
     <p>Discussion draft · shared by link · kept out of search engines.</p>
   </div>
 </footer>
@@ -663,7 +560,7 @@
           nFee=document.getElementById('nFee'),nActs=document.getElementById('nActs'),
           nGate=document.getElementById('nGate'),ev=document.getElementById('ev');
       var event='rollover';
-      var whyMap={rollover:'A rollover just landed and your balance changed.',cash:'Your cash balance has been climbing.',goal:'You added a new goal to your plan.',retire:'You are within about ten years of your target retirement date.',tlh:'You have realized taxable gains this year.'};
+      var whyMap={rollover:'A rollover just landed and your balance changed.',cash:'Your cash balance has been climbing.',goal:'You added a new goal to your plan.',retire:'You are within about ten years of your target retirement date.'};
       function dollars(v){var lo=1000,hi=6000000;return lo*Math.pow(hi/lo,v/100);}
       function fmt(d){if(d>=1e6)return '$'+(d/1e6).toFixed(1)+'M';if(d>=1000)return '$'+Math.round(d/1000)+'K';return '$'+Math.round(d);}
       function tierOf(d){return d>=5e6?4:d>=5e5?3:d>=5e4?2:d>=100?1:0;}
@@ -677,7 +574,6 @@
           if(t===2){nTitle.textContent='A fit worth a look: Personal Advisor';nBody.textContent='Given this moment and a balance over $50,000, you may be a fit for Personal Advisor, hybrid human and digital advice. No pressure, just an honest look at whether it helps.';nFee.textContent='From $50,000 · about 0.30% net advisory fee';}
           else if(t===3){nTitle.textContent='You may be eligible for Advisor Select';nBody.textContent='With over $500,000 invested, a dedicated CFP and a tailored, actively managed plan are available through Personal Advisor Select.';nFee.textContent='From $500,000 · tiered fee, max 0.30%';}
           else{nTitle.textContent='Personal Advisor Wealth Management';nBody.textContent='Above $5M, dedicated wealth planning with estate and tax strategies and private-market access is available, delivered through the VNTC trust company.';nFee.textContent='From $5,000,000 · tiered fee, max 0.30%';}
-          if(event==='tlh'){nBody.textContent+=' With taxable gains this year, automated tax-loss harvesting at this tier could help offset some of that tax.';}
           nGate.textContent='Passed the suitability gate · frequency-capped · one-tap opt-out';
         } else {
           elig.innerHTML='Eligible for: <b>self-serve or Digital Advisor</b> (from $100). Below the $50K advice threshold, the engine holds back.';
@@ -691,50 +587,6 @@
       bal.addEventListener('input',render);
       ev.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;event=b.getAttribute('data-e');[].slice.call(ev.querySelectorAll('button')).forEach(function(x){x.classList.toggle('on',x===b);});render();});
       render();
-    }
-
-    // ---- marketing-to-advice funnel ----
-    var reach=document.getElementById('reach');
-    if(reach){
-      var reachVal=document.getElementById('reachVal'),fBars=document.getElementById('funnelBars'),fSplit=document.getElementById('funnelSplit');
-      function comma(n){return Math.round(n).toLocaleString('en-US');}
-      function renderFunnel(){
-        var mgl=(+reach.value)*1000, mql=mgl*0.28, call=mql*0.32, impl=call*0.66;
-        var stages=[
-          {l:'MGL',s:'Marketing-generated leads',v:mgl,w:100,c:''},
-          {l:'MQL',s:'Qualified leads',v:mql,w:74,c:'28% qualify'},
-          {l:'Inbound advisor call',s:'Engaged with advice',v:call,w:52,c:'32% of MQL call'},
-          {l:'Implementations',s:'Converted to advised',v:impl,w:34,c:'66% of calls convert'}
-        ];
-        reachVal.textContent=comma(mgl);
-        var html='';
-        stages.forEach(function(st,i){
-          if(i>0) html+='<div class="fconv">&darr; <b>'+st.c+'</b></div>';
-          html+='<div class="fstage" style="width:'+st.w+'%"><span class="fl">'+st.l+'<span class="sub">'+st.s+'</span></span><span class="fv">'+comma(st.v)+'</span></div>';
-        });
-        fBars.innerHTML=html;
-        var da=impl*0.58, pa=impl*0.32, pas=impl*0.10;
-        fSplit.innerHTML=
-          '<div class="sp"><div class="t">DA</div><div class="n">'+comma(da)+'</div><div class="d">Digital Advisor</div></div>'+
-          '<div class="sp"><div class="t">PA</div><div class="n">'+comma(pa)+'</div><div class="d">Personal Advisor</div></div>'+
-          '<div class="sp"><div class="t">PAS</div><div class="n">'+comma(pas)+'</div><div class="d">Advisor Select</div></div>';
-      }
-      reach.addEventListener('input',renderFunnel);
-      renderFunnel();
-    }
-
-    // ---- scroll-spy dot nav ----
-    var dn=document.getElementById('dotnav');
-    if(dn){
-      var dlinks=[].slice.call(dn.querySelectorAll('a'));
-      var secs=dlinks.map(function(a){return document.querySelector(a.getAttribute('href'));});
-      function spy(){
-        var y=window.scrollY+window.innerHeight*0.35, idx=0;
-        secs.forEach(function(s,i){if(s && s.offsetTop<=y) idx=i;});
-        dlinks.forEach(function(a,i){a.classList.toggle('active',i===idx);});
-      }
-      dlinks.forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t){window.scrollTo({top:t.offsetTop-30,behavior:'smooth'});}});});
-      document.addEventListener('scroll',spy,{passive:true});spy();
     }
   })();
 </script>

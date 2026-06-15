@@ -1,39 +1,45 @@
-# Nayan Lal — Product research portfolio (`pm-portfolio`)
+# Advice Moments: product research by Nayan Lal (`pm-portfolio`)
 
-Self-initiated product strategy and research studies by Nayan Lal, AI Product Manager. Each study is built from public sources and framed as a discussion draft.
+A self-initiated product strategy study, **June 2026**, built entirely from public sources and framed as a discussion draft. The public site is focused on one study: **Advice Moments**, an outside-in product strategy for growing advice adoption among self-directed Vanguard investors.
 
-**▶ Live:** https://nayanlal029.github.io/pm-portfolio/ *(resolves once GitHub Pages is enabled — see below)*
+**▶ Live (once GitHub Pages is enabled):**
+- Landing: https://nayanlal029.github.io/pm-portfolio/
+- The study (current): https://nayanlal029.github.io/pm-portfolio/research/vanguard/
+- The study (previous version): https://nayanlal029.github.io/pm-portfolio/research/vanguard/v1/
 
 ## Structure
 
 ```
 pm-portfolio/
-├── index.html                 # landing page
-├── assets/site.css            # shared design system (tokens, type, components)
-├── robots.txt                 # keeps the site out of search engines
+├── index.html                       # landing (Advice Moments cover, nav, mini continuum)
+├── assets/site.css                  # shared design system
+├── robots.txt                       # keeps the site out of search engines
 └── research/
-    ├── vanguard/              # Advice Moments — Vanguard Personal Investor advice growth
-    │   ├── index.html         # interactive case study (centerpiece)
-    │   ├── brief.html         # executive PR-FAQ (source for the PDF)
-    │   ├── prd.html           # full AI-PRD (source for the PDF)
+    ├── vanguard/                    # Advice Moments (current version)
+    │   ├── index.html               # interactive case study
+    │   ├── brief.html / prd.html    # source for the PDFs
     │   ├── Nayan_Lal_Vanguard_Advice_Moments_Brief.pdf
-    │   └── Nayan_Lal_Vanguard_Advice_Moments_PRD.pdf
-    └── mergerware/            # MergerWare — M&A SaaS product research
-        ├── index.html         # interactive competitive landscape
-        └── MergerWare_Product_Strategy_and_PRD.pdf
+    │   ├── Nayan_Lal_Vanguard_Advice_Moments_PRD.pdf
+    │   └── v1/                       # previous version, self-contained (frozen CSS)
+    └── mergerware/                   # earlier study, kept in the repo but not linked from the site
 ```
 
-## Projects
+## The study: Advice Moments
 
-### Advice Moments — Vanguard Personal Investor advice growth (June 2026)
-An outside-in product strategy for growing advice adoption among self-directed investors: a governed personalization layer that surfaces the right advice step at the right moment, built as a phased, eval-governed AI system. Three layers: an interactive case study, an executive PR-FAQ brief, and a full AI-PRD written as a behavioral contract (eval thresholds, failure modes, governance).
+*Advice, the moment an investor crosses into the threshold.* A governed personalization layer that surfaces the right advice step to self-directed investors at the right moment, built as a phased, eval-governed AI system. Interactive pieces: a concentric advice continuum, a "moment" simulator across real public thresholds, a marketing-to-advice funnel (MGL → MQL → advisor call → DA/PA/PAS), a retention/churn view, plus an executive PR-FAQ brief and a full AI-PRD written as a behavioral contract.
 
-### MergerWare — M&A SaaS product research (June 2026)
-An interactive map of the M&A software market plus a strategy brief and flagship PRD for the leading bet (the "Value Engine"). Carried over from the earlier `pm-research-portfolio` repo.
+## Versions
 
-## Regenerating the Vanguard PDFs
+- **Current:** `research/vanguard/`: wider desktop layout, scroll-spy nav, ring labels, funnel and retention visuals.
+- **Previous:** `research/vanguard/v1/`: the earlier version, preserved self-contained with its own frozen stylesheet so it renders exactly as it did.
 
-The PDFs are rendered from the source HTML with headless Chrome:
+## MergerWare
+
+An earlier M&A SaaS product study lives at `research/mergerware/`. It is intentionally **not linked** from the public landing so the live site stays focused on a single company; the files remain in the repo as prior work.
+
+## Regenerating the PDFs
+
+Rendered from the source HTML with headless Chrome:
 
 ```
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -46,21 +52,10 @@ cd research/vanguard
 
 ## Enabling the live site
 
-After pushing, go to **Settings → Pages → Source: "Deploy from a branch" → Branch: `main` / `/ (root)` → Save**. The live URL resolves in about a minute.
-
-## Adding a new study
-
-1. Create `research/<project>/` with an `index.html` that links `../../assets/site.css`.
-2. Add a project card to the root `index.html`.
-3. Update this README and push.
-
-## Backlog (future studies)
-
-- **Proactive retention / early-warning** — AI early-warning to detect at-risk clients and trigger proactive saves.
-- **Personal Investor AI Copilot** — next-best-action personalization across the digital experience (onboarding, cash, mobile).
+**Settings → Pages → Source: "Deploy from a branch" → Branch: `main` / `/ (root)` → Save.** All paths above resolve within ~a minute. One toggle publishes every version.
 
 ## Notes
 
-- Intentionally kept out of search engines (`noindex` + `robots.txt`) — share by link. To make it discoverable later, remove the `noindex` meta tags and `robots.txt`.
-- All figures are from public sources, directional, and meant to start a conversation, not serve as a benchmark. Studies are independent work, not affiliated with or endorsed by any company discussed, and not based on any confidential information.
+- Kept out of search engines (`noindex` + `robots.txt`): share by link. Make the repo private if you prefer (note: GitHub Pages on a private repo needs a paid plan).
+- All figures are public or illustrative and directional, meant to start a conversation. Independent work, not affiliated with or endorsed by any company discussed, and not based on any confidential information.
 - Prepared by Nayan Lal · nayanlal1909@gmail.com · linkedin.com/in/nayan-lal
