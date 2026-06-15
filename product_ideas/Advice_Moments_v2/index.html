@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Advice Moments · Nayan Lal · product strategy for Personal Investor advice growth</title>
+<meta name="description" content="Advice Moments: an outside-in product strategy for growing advice adoption among self-directed investors. An interactive discussion draft by Nayan Lal, AI Product Manager." />
+<link rel="stylesheet" href="../../assets/site.css" />
+<style>
+  html{scroll-behavior:smooth}
+  .lwrap{max-width:1460px;margin:0 auto;padding:0 clamp(20px,3.6vw,56px)}
+  section[id]{scroll-margin-top:80px}
+
+  /* hero, full-bleed, filled */
+  .herowrap{background:
+     radial-gradient(900px 520px at 88% 8%, #eef6f1 0%, rgba(238,246,241,0) 60%),
+     radial-gradient(700px 480px at 2% 92%, #f4efe2 0%, rgba(244,239,226,0) 55%),
+     var(--paper);
+     border-bottom:1px solid var(--line-soft)}
+  .hero{padding:54px 0 40px}
+  .hgrid{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(28px,4vw,64px);align-items:center}
+  @media(max-width:920px){.hgrid{grid-template-columns:1fr;gap:30px}}
+  .amtitle{font-family:var(--serif);font-weight:600;letter-spacing:-.022em;line-height:.98;
+    font-size:clamp(54px,7.4vw,96px);margin:6px 0 14px;color:var(--ink)}
+  .hook{font-family:var(--serif);font-size:clamp(21px,2.5vw,31px);line-height:1.18;color:var(--ink);margin:0 0 12px;max-width:20ch}
+  .hook em{color:var(--accent);font-style:italic}
+  .tagline{font-family:var(--serif);font-style:italic;font-size:clamp(16px,1.7vw,20px);color:var(--accent-ink);margin:0 0 16px}
+  .hsub{font-size:clamp(15.5px,1.3vw,17.5px);color:var(--ink-soft);max-width:58ch;margin:0 0 26px}
+
+  /* hero continuum card */
+  .bullcard{padding:24px 26px}
+  .amk{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:6px}
+  .bullcard svg{width:100%;max-width:300px;height:auto;display:block;margin:4px auto 8px}
+  .bullcard .ring{cursor:pointer;transition:opacity .15s}
+  .bullcard.dim .ring:not(.active){opacity:.4}
+  .bullcard .ring.active{stroke:#11161d;stroke-width:2}
+  .legchips{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:12px}
+  .legchips button{font-size:11.5px;font-weight:600;border:1px solid var(--line);background:var(--surface);
+    color:var(--ink-soft);border-radius:999px;padding:5px 11px;cursor:pointer;transition:.12s}
+  .legchips button:hover,.legchips button.active{background:var(--accent-soft);border-color:#bcdfd0;color:var(--accent-ink)}
+  .detail{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px;background:var(--surface-2);min-height:92px}
+  .detail .dn{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
+  .detail .dm{display:flex;gap:20px;flex-wrap:wrap;margin:8px 0}
+  .detail .dm b{font-family:var(--serif);font-size:17px;color:var(--accent-ink);display:block;line-height:1.1}
+  .detail .dm span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .detail p{font-size:12.5px;margin:0;color:var(--ink-soft)}
+  .momentnote{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px;border-top:1px dashed var(--line);padding-top:12px}
+  .momentnote b{color:var(--accent-ink)}
+
+  /* stat band */
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface);margin:34px 0 16px}
+  .stats .s{padding:18px 16px;border-right:1px solid var(--line-soft)}
+  .stats .s:last-child{border-right:none}
+  .stats .v{font-family:var(--serif);font-size:23px;color:var(--accent-ink);line-height:1.05}
+  .stats .l{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.35}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.stats .s{border-bottom:1px solid var(--line-soft)}}
+
+  /* jump pills + accordion */
+  .pills{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:26px}
+  .pills a{font-size:13.5px;font-weight:600;color:var(--ink-soft);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 16px;transition:.12s;cursor:pointer}
+  .pills a:hover{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
+  .acc{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+  .acc details{border-bottom:1px solid var(--line-soft)}
+  .acc details:last-child{border-bottom:none}
+  .acc summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:18px;padding:22px 26px;transition:.12s}
+  .acc summary::-webkit-details-marker{display:none}
+  .acc summary:hover{background:var(--surface-2)}
+  .acc .ix{font-family:var(--serif);font-size:16px;color:var(--accent);min-width:28px}
+  .acc .st{font-family:var(--serif);font-size:clamp(19px,1.8vw,23px);color:var(--ink);flex:1}
+  .acc .sd{font-size:13px;color:var(--muted);margin-left:auto;margin-right:14px}
+  .acc .pl{color:var(--accent);font-size:24px;font-weight:300;transition:.2s}
+  .acc details[open] .pl{transform:rotate(45deg)}
+  .acc .panel{padding:4px 26px 28px 72px}
+  .acc .panel>p{font-size:15.5px;color:var(--ink-soft);margin:0 0 18px;max-width:74ch}
+  @media(max-width:620px){.acc .panel{padding:4px 20px 22px 20px}.acc summary{padding:18px 18px}.acc .sd{display:none}}
+
+  /* simulator (embedded) */
+  .sim{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  @media(max-width:820px){.sim{grid-template-columns:1fr;gap:22px}}
+  .sim .ctrl label{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .sim .bal{font-family:var(--serif);font-size:36px;color:var(--ink);margin:6px 0 2px;line-height:1}
+  .sim input[type=range]{width:100%;accent-color:var(--accent);margin:12px 0 4px;cursor:pointer}
+  .ticks{display:flex;justify-content:space-between;font-size:10px;color:var(--faint)}
+  .evchips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .evchips button{font-size:12.5px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);border-radius:999px;padding:7px 13px;cursor:pointer;transition:.12s}
+  .evchips button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .elig{margin-top:18px;font-size:13px;color:var(--ink-soft);line-height:1.5}
+  .elig b{color:var(--accent-ink)}
+  .nudge{border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+  .nudge .nb{background:var(--accent);height:5px}
+  .nudge.block .nb{background:var(--faint)}
+  .nudge .ni{padding:18px 20px}
+  .nudge .why{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-bottom:10px}
+  .nudge .why .d{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:0 0 7px}
+  .nudge.block .why .d{background:var(--faint)}
+  .nudge h4{font-family:var(--sans);font-size:15.5px;font-weight:650;margin:0 0 6px;color:var(--ink)}
+  .nudge p{font-size:13px;margin:0 0 12px;color:var(--ink-soft)}
+  .nudge .fee{font-size:12px;color:var(--muted);margin-bottom:14px}
+  .nudge .acts{display:flex;gap:10px}
+  .nudge .acts button{font-size:13px;font-weight:600;border-radius:8px;padding:9px 14px;cursor:default}
+  .nudge .acts .b1{background:var(--accent);color:#fff;border:none}
+  .nudge .acts .b2{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+  .nudge .gate{font-size:11px;color:var(--accent-ink);background:var(--accent-soft);padding:9px 14px;border-top:1px solid #d8ebe2}
+  .nudge.block .gate{color:var(--ink-soft);background:var(--surface-2);border-top-color:var(--line)}
+  .simnote{font-size:11.5px;color:var(--muted);margin-top:10px}
+
+  /* funnel (embedded) */
+  .fwrap{display:grid;grid-template-columns:260px 1fr;gap:30px;align-items:start}
+  @media(max-width:820px){.fwrap{grid-template-columns:1fr;gap:20px}}
+  .fctrl label{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .fctrl .rv{font-family:var(--serif);font-size:30px;color:var(--ink);margin:6px 0 2px;line-height:1}
+  .fctrl input[type=range]{width:100%;accent-color:var(--accent);margin:12px 0 4px;cursor:pointer}
+  .fctrl .note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.5}
+  .fctrl .note b{color:var(--accent-ink)}
+  .funnel{display:flex;flex-direction:column;align-items:center}
+  .fstage{width:100%;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(180deg,#e6f2ec,#dceee6);border:1px solid #cfe6dc;border-radius:10px;padding:13px 20px;transition:.15s}
+  .fstage:hover{background:#d2ebe1;border-color:#a9d3c1}
+  .fstage .fl{font-size:13.5px;font-weight:650;color:var(--accent-ink)}
+  .fstage .fl .sub{display:block;font-size:10.5px;font-weight:600;color:var(--muted);letter-spacing:.03em}
+  .fstage .fv{font-family:var(--serif);font-size:19px;color:var(--ink);white-space:nowrap}
+  .fconv{font-size:11.5px;color:var(--muted);padding:6px 0}
+  .fconv b{color:var(--accent-ink)}
+  .fsplit{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;margin-top:10px}
+  .fsplit .sp{border:1px solid var(--line);border-radius:10px;padding:11px 12px;text-align:center;background:var(--surface)}
+  .fsplit .sp .t{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.04em}
+  .fsplit .sp .n{font-family:var(--serif);font-size:18px;color:var(--ink);margin-top:3px}
+  .fsplit .sp .d{font-size:10.5px;color:var(--muted);margin-top:2px}
+
+  /* governance chips + churn */
+  .gv{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}
+  .churn{display:flex;flex-direction:column;gap:13px;margin-top:4px}
+  .crow{display:grid;grid-template-columns:150px 1fr 50px;align-items:center;gap:16px}
+  .crow .cl{font-size:13.5px;font-weight:650;color:var(--ink)}
+  .crow .ctrack{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;height:16px;overflow:hidden}
+  .crow .cfill{height:100%;background:linear-gradient(90deg,#0a5340,#7cb8a1);border-radius:999px}
+  .crow .cv{font-size:13.5px;font-weight:700;color:var(--accent-ink);text-align:right}
+  @media(max-width:560px){.crow{grid-template-columns:104px 1fr 42px;gap:10px}}
+
+  /* form modal */
+  .modal{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:20px;
+    background:rgba(17,22,29,.5);backdrop-filter:blur(3px)}
+  .modal.open{display:flex}
+  .modal-card{background:var(--surface);border-radius:var(--r);max-width:460px;width:100%;padding:30px 30px 26px;box-shadow:var(--shadow);position:relative}
+  .modal-card h3{font-family:var(--serif);font-size:23px;margin:0 0 6px}
+  .modal-card p{font-size:13.5px;color:var(--ink-soft);margin:0 0 18px}
+  .modal-card label{display:block;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:0 0 5px}
+  .modal-card input,.modal-card textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:14px;font-family:var(--sans);margin-bottom:13px;background:var(--paper);color:var(--ink)}
+  .modal-card textarea{resize:vertical;min-height:62px}
+  .modal-card .x{position:absolute;top:14px;right:16px;border:none;background:none;font-size:22px;color:var(--muted);cursor:pointer;line-height:1}
+  .modal-card .cvline{font-size:12.5px;color:var(--muted);margin-top:6px}
+  .modal-card .cvline a{font-weight:600}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="lwrap bar">
+    <div class="brand"><a href="#top">Nayan Lal<span class="dot">.</span></a></div>
+    <nav class="navlinks">
+      <a href="#jump">The study</a>
+      <a class="hide-sm" href="#" data-form>Brief</a>
+      <a href="https://www.linkedin.com/in/nayan-lal" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:nayanlal1909@gmail.com">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="herowrap">
+    <div class="lwrap hero">
+      <div class="hgrid">
+        <div class="hleft reveal">
+          <p class="eyebrow">Product strategy · Personal Investor · June 2026</p>
+          <h1 class="amtitle">Advice Moments</h1>
+          <p class="hook">What if advice <em>found</em> the investor, instead of the other way around?</p>
+          <p class="tagline">Advice, the moment an investor crosses into the threshold.</p>
+          <p class="hsub">An outside-in product strategy for growing advice adoption among self-directed investors: a governed personalization layer that surfaces the right advice step at the right moment, built as a phased, eval-governed AI system rather than a black box.</p>
+          <div class="btns">
+            <a class="btn primary" href="#jump">Explore the thinking →</a>
+            <button class="btn ghost" type="button" data-form>Request the brief</button>
+          </div>
+        </div>
+        <div class="hright reveal">
+          <div class="card bullcard" id="bull">
+            <div class="amk">The advice continuum · hover a ring</div>
+            <svg viewBox="0 0 320 320" role="img" aria-label="Concentric advice continuum from self-directed to wealth.">
+              <circle class="ring" data-t="0" cx="160" cy="160" r="150" fill="#efe4c8"></circle>
+              <circle class="ring" data-t="1" cx="160" cy="160" r="120" fill="#d9ece2"></circle>
+              <circle class="ring" data-t="2" cx="160" cy="160" r="90"  fill="#aed4c3"></circle>
+              <circle class="ring" data-t="3" cx="160" cy="160" r="58"  fill="#5fa389"></circle>
+              <circle class="ring" data-t="4" cx="160" cy="160" r="30"  fill="#0e6b54"></circle>
+              <g style="pointer-events:none" font-family="-apple-system,Segoe UI,Roboto,sans-serif" text-anchor="middle" font-weight="700">
+                <text x="160" y="36" font-size="12" fill="#6e5a2a">SD</text>
+                <text x="160" y="64" font-size="12" fill="#1b4a3b">DA</text>
+                <text x="160" y="92" font-size="12" fill="#0a5340">PA</text>
+                <text x="160" y="119" font-size="11" fill="#ffffff">PA(S)</text>
+                <text x="160" y="158" font-size="11" fill="#ffffff">WM</text>
+                <text x="160" y="172" font-size="8" fill="#cfe6dc" font-weight="600">$5M+</text>
+              </g>
+            </svg>
+            <div class="legchips" id="leg">
+              <button data-t="0">SD</button><button data-t="1">DA</button><button data-t="2">PA</button><button data-t="3">PA(S)</button><button data-t="4">WM</button>
+            </div>
+            <div class="detail" id="detail" aria-live="polite"></div>
+            <div class="momentnote">A <b>moment</b> is a real signal (a rollover, cash building up, a new goal) that suggests advice could genuinely help. Advice Moments scores the benefit, then surfaces a governed, explainable nudge, or stays quiet.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats reveal">
+        <div class="s"><div class="v">~$10T+</div><div class="l">Global AUM (public, approx.)</div></div>
+        <div class="s"><div class="v">50M+</div><div class="l">Investors in 160+ countries</div></div>
+        <div class="s"><div class="v">30M+</div><div class="l">Retail clients to personalize for</div></div>
+        <div class="s"><div class="v">0.07%</div><div class="l">Avg fund fee vs 0.44% industry</div></div>
+        <div class="s"><div class="v">5–10×</div><div class="l">Advice fees vs fund fees: the lever</div></div>
+      </div>
+      <details class="disc-c reveal">
+        <summary>On scope &amp; discretion (independent, public sources only)</summary>
+        <div class="body">An independent thinking exercise built entirely from publicly available information about a large US investment manager's advice business. Not affiliated with, endorsed by, or based on any confidential information. Thresholds and fees shown are public; proportions and any figures marked illustrative are directional, meant to frame a conversation.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- JUMP IN -->
+  <section class="lwrap section" id="jump">
+    <p class="eyebrow reveal">Jump in</p>
+    <h2 class="reveal" style="max-width:24ch">Explore the thinking, section by section</h2>
+    <p class="read reveal" style="margin-left:0;margin-bottom:22px">Open any section to play with the live visual embedded inside it. The deeper written study (full strategy and AI-PRD) is a work in progress.</p>
+    <div class="pills reveal">
+      <a data-jump="d-problem">The problem</a>
+      <a data-jump="d-sim">Moment simulator</a>
+      <a data-jump="d-funnel">Marketing funnel</a>
+      <a data-jump="d-gov">Governance</a>
+      <a data-jump="d-churn">Retention</a>
+    </div>
+
+    <div class="acc reveal">
+      <details id="d-problem" open>
+        <summary><span class="ix">01</span><span class="st">The problem: advice is a destination, not a moment</span><span class="sd">read</span><span class="pl">+</span></summary>
+        <div class="panel">
+          <p>For a self-directed investor, advice is still a separate decision and motion. The investor who would benefit most, navigating a rollover, a windfall, a new goal, or simply rising complexity, rarely gets a relevant, plain-language prompt while the need is live. That activation gap, at the first $50K step on the continuum above, is the opportunity: detect the moment and respond to it well, in-product, at scale, and within fiduciary guardrails.</p>
+        </div>
+      </details>
+      <details id="d-sim">
+        <summary><span class="ix">02</span><span class="st">A moment, simulated</span><span class="sd">interactive</span><span class="pl">+</span></summary>
+        <div class="panel">
+          <p>Drag the balance and pick a life event. Watch eligibility cross the real public thresholds, and see the governed nudge fire, or deliberately suppress itself below the benefit threshold.</p>
+          <div class="sim">
+            <div class="ctrl">
+              <label>Investor balance</label>
+              <div class="bal" id="balVal">$120,000</div>
+              <input type="range" id="bal" min="0" max="100" value="55" aria-label="Investor balance" />
+              <div class="ticks"><span>$1K</span><span>$50K</span><span>$500K</span><span>$5M</span><span>$6M</span></div>
+              <label style="display:block;margin-top:20px">Life event · the signal</label>
+              <div class="evchips" id="ev">
+                <button data-e="rollover" class="on">Job change / rollover</button>
+                <button data-e="cash">Cash building up</button>
+                <button data-e="goal">New goal added</button>
+                <button data-e="retire">Nearing retirement</button>
+                <button data-e="tlh">Taxable gains this year</button>
+              </div>
+              <div class="elig" id="elig"></div>
+            </div>
+            <div>
+              <div class="nudge" id="nudge">
+                <div class="nb"></div>
+                <div class="ni">
+                  <div class="why"><span class="d"></span><span id="whyTxt"></span></div>
+                  <h4 id="nTitle"></h4>
+                  <p id="nBody"></p>
+                  <div class="fee" id="nFee"></div>
+                  <div class="acts" id="nActs"><button class="b1">Talk to an advisor</button><button class="b2">Start digitally</button></div>
+                </div>
+                <div class="gate" id="nGate"></div>
+              </div>
+              <div class="simnote">Illustrative interaction. Thresholds and fees are public; the prompt copy is a mock, not a real message.</div>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details id="d-funnel">
+        <summary><span class="ix">03</span><span class="st">Marketing-to-advice funnel</span><span class="sd">interactive</span><span class="pl">+</span></summary>
+        <div class="panel">
+          <p>The operating view in the team's own language: how marketing-sourced demand becomes advised relationships. Drag the campaign reach and watch each stage scale.</p>
+          <div class="fwrap">
+            <div class="fctrl">
+              <label>Campaign reach</label>
+              <div class="rv" id="reachVal">100,000</div>
+              <input type="range" id="reach" min="20" max="250" value="100" aria-label="Campaign reach" />
+              <div class="note"><b>MGL</b> (marketing-generated lead) → <b>MQL</b> (qualified) → inbound advisor call → <b>implementations</b>, split across <b>DA / PA / PAS</b>. This is the kind of campaign-measurement view I have built and instrumented before, pulling from data tables into one decision layer for measurement plans and campaign performance.</div>
+            </div>
+            <div>
+              <div class="funnel" id="funnelBars"></div>
+              <div class="fsplit" id="funnelSplit"></div>
+            </div>
+          </div>
+        </div>
+      </details>
+      <details id="d-gov">
+        <summary><span class="ix">04</span><span class="st">The AI as a behavioral contract</span><span class="sd">read</span><span class="pl">+</span></summary>
+        <div class="panel">
+          <p>A recommendation engine is probabilistic, so the spec defines what good looks like in numbers, how it fails safely, and where it must stop. In a fiduciary context that is not optional polish, it is the product. Release gates (illustrative): suitability precision &ge; 99.5%, significant incremental benefit vs. a holdout, zero coercive outputs, factuality blocks on fail.</p>
+          <div class="gv">
+            <span class="chip accent">Reg BI / fiduciary suitability gate</span>
+            <span class="chip accent">Human-in-the-loop at recommendation boundaries</span>
+            <span class="chip">Frequency caps &amp; cool-downs</span>
+            <span class="chip">"Why am I seeing this?" explainability</span>
+            <span class="chip">One-tap opt-out</span>
+            <span class="chip">No performance promises</span>
+            <span class="chip">EU AI Act-style risk classification</span>
+            <span class="chip">Bias &amp; fairness review</span>
+          </div>
+        </div>
+      </details>
+      <details id="d-churn">
+        <summary><span class="ix">05</span><span class="st">Why it compounds: retention</span><span class="sd">visual</span><span class="pl">+</span></summary>
+        <div class="panel">
+          <p>The case for advice is not only growth, it is durability. Advised relationships churn far less than self-directed accounts, so every appropriate match also lifts retention. A churn-propensity model can flag at-risk relationships for proactive outreach.</p>
+          <div class="churn">
+            <div class="crow"><span class="cl">Self-directed</span><div class="ctrack"><div class="cfill" style="width:100%"></div></div><span class="cv">~9%</span></div>
+            <div class="crow"><span class="cl">Digital Advisor</span><div class="ctrack"><div class="cfill" style="width:67%"></div></div><span class="cv">~6%</span></div>
+            <div class="crow"><span class="cl">Personal Advisor</span><div class="ctrack"><div class="cfill" style="width:44%"></div></div><span class="cv">~4%</span></div>
+            <div class="crow"><span class="cl">Advisor Select</span><div class="ctrack"><div class="cfill" style="width:33%"></div></div><span class="cv">~3%</span></div>
+            <div class="crow"><span class="cl">Wealth Mgmt</span><div class="ctrack"><div class="cfill" style="width:22%"></div></div><span class="cv">~2%</span></div>
+          </div>
+          <p class="small muted" style="margin-top:14px;margin-bottom:0">Illustrative annual attrition by tier, directional. Retention modeling and churn scoring are part of my prior analytics work.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="btns reveal" style="margin-top:30px">
+      <button class="btn primary" type="button" data-form>Request the brief &amp; full PRD</button>
+      <a class="btn line" href="./Nayan_Lal_CV.pdf" target="_blank" rel="noopener">My CV</a>
+    </div>
+    <p class="small muted reveal" style="margin-top:14px">The full written study (strategy brief and AI-PRD) is being finalised. Request a copy and I will send it across.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="lwrap">
+    <p style="color:var(--ink);font-family:var(--serif);font-size:17px;margin-bottom:10px">Nayan Lal</p>
+    <p>AI Product Manager · <a href="mailto:nayanlal1909@gmail.com">nayanlal1909@gmail.com</a> · <a href="https://www.linkedin.com/in/nayan-lal" target="_blank" rel="noopener">linkedin.com/in/nayan-lal</a></p>
+    <p>Self-initiated product research, June 2026. Built from public sources as a discussion draft. Independent work, not affiliated with or endorsed by any firm. Kept out of search engines, please share by link.</p>
+  </div>
+</footer>
+
+<!-- request form modal -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Request the brief">
+  <div class="modal-card">
+    <button class="x" type="button" id="modalX" aria-label="Close">&times;</button>
+    <h3>Request the brief</h3>
+    <p>Leave your details and I will send the executive brief and full AI-PRD across by email.</p>
+    <form id="reqForm">
+      <label for="rfName">Name</label>
+      <input id="rfName" type="text" required autocomplete="name" />
+      <label for="rfEmail">Email</label>
+      <input id="rfEmail" type="email" required autocomplete="email" />
+      <label for="rfCo">Company</label>
+      <input id="rfCo" type="text" autocomplete="organization" />
+      <label for="rfMsg">Anything you would like me to address? (optional)</label>
+      <textarea id="rfMsg"></textarea>
+      <button class="btn primary" type="submit" style="width:100%">Send request →</button>
+    </form>
+    <p class="cvline">Prefer to skim my background first? <a href="./Nayan_Lal_CV.pdf" target="_blank" rel="noopener">Download my CV (PDF)</a></p>
+  </div>
+</div>
+
+<script>
+  (function(){
+    // reveal
+    var els=document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.01,rootMargin:'0px 0px -6% 0px'});
+      els.forEach(function(e){io.observe(e)});
+      setTimeout(function(){els.forEach(function(e){if(e.getBoundingClientRect().top<window.innerHeight){e.classList.add('in');}});},1200);
+    } else { els.forEach(function(e){e.classList.add('in')}); }
+
+    // continuum
+    var T=[
+      {n:'Self-directed', min:'No minimum', fee:'Fund fees (~0.07% avg)', who:'Brokerage and funds, no advice relationship. The widest ring, and the pool Advice Moments is built to serve.'},
+      {n:'Digital Advisor', min:'$100', fee:'~0.20% gross', who:'All-digital robo advice. The lowest-friction first step onto the continuum.'},
+      {n:'Personal Advisor', min:'$50,000', fee:'~0.30% net', who:'Hybrid human plus digital. The first human-advice tier; eligibility begins at $50K.'},
+      {n:'Advisor Select', min:'$500,000', fee:'Tiered, max 0.30%', who:'A dedicated advisor, a tailored plan, and ongoing portfolio management.'},
+      {n:'Wealth Management', min:'$5,000,000', fee:'Tiered, max 0.30%', who:'Dedicated wealth planning: estate and tax strategies and private-market access, via a trust company.'}
+    ];
+    var bull=document.getElementById('bull');
+    if(bull){
+      var rings=[].slice.call(bull.querySelectorAll('.ring'));
+      var chips=[].slice.call(bull.querySelectorAll('.legchips button'));
+      var detail=document.getElementById('detail');
+      function rd(i){var t=T[i];detail.innerHTML='<div class="dn">'+t.n+'</div><div class="dm"><div><b>'+t.min+'</b><span>Minimum</span></div><div><b>'+t.fee+'</b><span>Advisory fee</span></div></div><p>'+t.who+'</p>';}
+      function hi(i){bull.classList.add('dim');rings.forEach(function(r){r.classList.toggle('active',r.getAttribute('data-t')===String(i));});chips.forEach(function(c){c.classList.toggle('active',c.getAttribute('data-t')===String(i));});}
+      function clr(){bull.classList.remove('dim');rings.forEach(function(r){r.classList.remove('active');});chips.forEach(function(c){c.classList.remove('active');});}
+      function bind(el){var i=+el.getAttribute('data-t');el.addEventListener('mouseenter',function(){rd(i);hi(i);});el.addEventListener('click',function(){rd(i);hi(i);});}
+      rings.forEach(bind);chips.forEach(bind);
+      bull.addEventListener('mouseleave',clr);
+      rd(0);
+    }
+
+    // simulator
+    var bal=document.getElementById('bal');
+    if(bal){
+      var balVal=document.getElementById('balVal'),elig=document.getElementById('elig'),nudge=document.getElementById('nudge'),
+          whyTxt=document.getElementById('whyTxt'),nTitle=document.getElementById('nTitle'),nBody=document.getElementById('nBody'),
+          nFee=document.getElementById('nFee'),nActs=document.getElementById('nActs'),nGate=document.getElementById('nGate'),ev=document.getElementById('ev');
+      var event='rollover';
+      var whyMap={rollover:'A rollover just landed and your balance changed.',cash:'Your cash balance has been climbing.',goal:'You added a new goal to your plan.',retire:'You are within about ten years of your target retirement date.',tlh:'You have realized taxable gains this year.'};
+      function dollars(v){var lo=1000,hi=6000000;return lo*Math.pow(hi/lo,v/100);}
+      function fmt(d){if(d>=1e6)return '$'+(d/1e6).toFixed(1)+'M';if(d>=1000)return '$'+Math.round(d/1000)+'K';return '$'+Math.round(d);}
+      function tierOf(d){return d>=5e6?4:d>=5e5?3:d>=5e4?2:d>=100?1:0;}
+      function render(){
+        var d=dollars(+bal.value),t=tierOf(d);
+        balVal.textContent=fmt(d);
+        whyTxt.textContent='Why am I seeing this? '+whyMap[event];
+        nActs.style.display='flex';nudge.classList.remove('block');
+        if(t>=2){
+          elig.innerHTML='Eligible for: <b>'+T[t].n+'</b> (from '+T[t].min+'). Advice Moments surfaces a governed prompt.';
+          if(t===2){nTitle.textContent='A fit worth a look: Personal Advisor';nBody.textContent='Given this moment and a balance over $50,000, you may be a fit for Personal Advisor, hybrid human and digital advice. No pressure, just an honest look at whether it helps.';nFee.textContent='From $50,000 · about 0.30% net advisory fee';}
+          else if(t===3){nTitle.textContent='You may be eligible for Advisor Select';nBody.textContent='With over $500,000 invested, a dedicated advisor and a tailored, actively managed plan are available.';nFee.textContent='From $500,000 · tiered fee, max 0.30%';}
+          else{nTitle.textContent='Wealth Management';nBody.textContent='Above $5M, dedicated wealth planning with estate and tax strategies and private-market access is available.';nFee.textContent='From $5,000,000 · tiered fee, max 0.30%';}
+          if(event==='tlh'){nBody.textContent+=' With taxable gains this year, automated tax-loss harvesting at this tier could help offset some of that tax.';}
+          nGate.textContent='Passed the suitability gate · frequency-capped · one-tap opt-out';
+        } else {
+          elig.innerHTML='Eligible for: <b>self-serve or Digital Advisor</b> (from $100). Below the $50K advice threshold, the engine holds back.';
+          nudge.classList.add('block');nActs.style.display='none';
+          nTitle.textContent='Advice Moments stays quiet';
+          nBody.textContent='Below the $50,000 threshold, advice may not add enough value yet. The engine waits for a moment that genuinely helps rather than nudging for its own sake.';
+          nFee.textContent='';
+          nGate.textContent='Suppressed by the benefit and suitability gate. Restraint is a feature, not a miss.';
+        }
+      }
+      bal.addEventListener('input',render);
+      ev.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;event=b.getAttribute('data-e');[].slice.call(ev.querySelectorAll('button')).forEach(function(x){x.classList.toggle('on',x===b);});render();});
+      render();
+    }
+
+    // funnel
+    var reach=document.getElementById('reach');
+    if(reach){
+      var reachVal=document.getElementById('reachVal'),fBars=document.getElementById('funnelBars'),fSplit=document.getElementById('funnelSplit');
+      function comma(n){return Math.round(n).toLocaleString('en-US');}
+      function rf(){
+        var mgl=(+reach.value)*1000, mql=mgl*0.28, call=mql*0.32, impl=call*0.66;
+        var stages=[{l:'MGL',s:'Marketing-generated leads',v:mgl,w:100,c:''},{l:'MQL',s:'Qualified leads',v:mql,w:74,c:'28% qualify'},{l:'Inbound advisor call',s:'Engaged with advice',v:call,w:52,c:'32% of MQL call'},{l:'Implementations',s:'Converted to advised',v:impl,w:34,c:'66% of calls convert'}];
+        reachVal.textContent=comma(mgl);
+        var html='';
+        stages.forEach(function(st,i){if(i>0)html+='<div class="fconv">&darr; <b>'+st.c+'</b></div>';html+='<div class="fstage" style="width:'+st.w+'%"><span class="fl">'+st.l+'<span class="sub">'+st.s+'</span></span><span class="fv">'+comma(st.v)+'</span></div>';});
+        fBars.innerHTML=html;
+        var da=impl*0.58,pa=impl*0.32,pas=impl*0.10;
+        fSplit.innerHTML='<div class="sp"><div class="t">DA</div><div class="n">'+comma(da)+'</div><div class="d">Digital Advisor</div></div><div class="sp"><div class="t">PA</div><div class="n">'+comma(pa)+'</div><div class="d">Personal Advisor</div></div><div class="sp"><div class="t">PAS</div><div class="n">'+comma(pas)+'</div><div class="d">Advisor Select</div></div>';
+      }
+      reach.addEventListener('input',rf);rf();
+    }
+
+    // jump pills: open + scroll to the matching accordion item
+    [].slice.call(document.querySelectorAll('[data-jump]')).forEach(function(a){
+      a.addEventListener('click',function(e){e.preventDefault();var t=document.getElementById(a.getAttribute('data-jump'));if(t){t.open=true;window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});}});
+    });
+
+    // request form modal
+    var modal=document.getElementById('modal');
+    [].slice.call(document.querySelectorAll('[data-form]')).forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();modal.classList.add('open');});});
+    document.getElementById('modalX').addEventListener('click',function(){modal.classList.remove('open');});
+    modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.remove('open');});
+    document.getElementById('reqForm').addEventListener('submit',function(e){
+      e.preventDefault();
+      var n=encodeURIComponent(document.getElementById('rfName').value),
+          em=encodeURIComponent(document.getElementById('rfEmail').value),
+          co=encodeURIComponent(document.getElementById('rfCo').value),
+          ms=encodeURIComponent(document.getElementById('rfMsg').value);
+      var body='Name: '+n+'%0D%0AEmail: '+em+'%0D%0ACompany: '+co+'%0D%0A%0D%0A'+ms;
+      window.location.href='mailto:nayanlal1909@gmail.com?subject='+encodeURIComponent('Advice Moments: brief request')+'&body='+body;
+    });
+  })();
+</script>
+</body>
+</html>
