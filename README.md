@@ -1,8 +1,8 @@
-# pm-portfolio — product research by Nayan Lal
+# pm-portfolio: product research by Nayan Lal
 
 Self-initiated product strategy studies, written outside-in from public sources and framed as discussion drafts. Each study is a working artifact: interactive visuals plus the companion documents a product team would actually read.
 
-**Primary artifact — Advice Moments**
+**Primary artifact: Advice Moments**
 An outside-in product strategy for growing advice adoption among self-directed investors: a governed personalization layer that surfaces the right advice step at the right moment, built as a phased, eval-governed AI system rather than a black box.
 
 > **Note on discretion:** the published page deliberately does not name the firm it studies. Thresholds and figures are public or illustrative. Keep this README consistent with that: no client name in the repo, so a stray link or a repo screenshot never becomes an issue.
