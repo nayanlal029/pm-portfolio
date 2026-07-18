@@ -48,13 +48,19 @@ a:hover{color:var(--accent-ink)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
 .wrap.wide{max-width:var(--wide)}
 .read{max-width:var(--readw)}
-.section{padding:80px 0}
-.section--tight{padding:48px 0}
+.section{padding-top:80px;padding-bottom:80px}
+.section--tight{padding-top:48px;padding-bottom:48px}
 .hr{height:1px;background:var(--line);border:0;margin:0}
 @media(max-width:760px){
   .wrap{padding:0 20px}
-  .section{padding:52px 0}
-  .section--tight{padding:34px 0}
+  .section{padding-top:52px;padding-bottom:52px}
+  .section--tight{padding-top:34px;padding-bottom:34px}
+}
+/* touch ergonomics */
+@media(pointer:coarse){
+  .btn{padding:14px 22px}
+  .chip{padding:8px 15px}
+  .navlinks a{padding:8px 2px}
 }
 
 /* type scale */

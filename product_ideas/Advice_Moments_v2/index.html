@@ -3,9 +3,10 @@
 <head>
 <script>document.documentElement.classList.add('js');</script>
 <meta charset="utf-8" />
+<meta name="theme-color" content="#fbfbf8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex" />
-<title>Advice Moments · Nayan Lal · product strategy for Personal Investor advice growth</title>
+<title>Advice Moments · Nayan Lal · product strategy for Personal Wealth &amp; Advice growth</title>
 <meta name="description" content="Advice Moments: an outside-in product strategy for growing advice adoption among self-directed investors. An interactive discussion draft by Nayan Lal, AI Product Manager." />
 <link rel="stylesheet" href="../../assets/site.css" />
 <style>
@@ -30,7 +31,8 @@
      radial-gradient(700px 480px at 2% 92%, #f4efe2 0%, rgba(244,239,226,0) 55%),
      var(--paper);
      border-bottom:1px solid var(--line-soft)}
-  .hero{padding:54px 0 40px}
+  .hero{padding-top:54px;padding-bottom:40px}
+  @media(max-width:760px){.hero{padding-top:34px;padding-bottom:30px}}
   .hgrid{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(28px,4vw,64px);align-items:center}
   @media(max-width:920px){.hgrid{grid-template-columns:1fr;gap:30px}}
   .amtitle{font-family:var(--serif);font-weight:600;letter-spacing:-.022em;line-height:.98;
@@ -190,7 +192,7 @@
     <div class="lwrap hero">
       <div class="hgrid">
         <div class="hleft reveal">
-          <p class="eyebrow">Product strategy · Personal Investor · June 2026</p>
+          <p class="eyebrow">Product strategy · Personal Wealth &amp; Advice · June 2026</p>
           <h1 class="amtitle">Advice Moments</h1>
           <p class="hook">What if advice <em>found</em> the investor, instead of the other way around?</p>
           <p class="tagline">Advice, the moment an investor crosses into the threshold.</p>
@@ -320,7 +322,7 @@
       <details id="d-gov">
         <summary><span class="ix">04</span><span class="st">The AI as a behavioral contract</span><span class="pl">+</span></summary>
         <div class="panel">
-          <p>A recommendation engine is probabilistic, so the spec defines what good looks like in numbers, how it fails safely, and where it must stop. In a fiduciary context that is not optional polish, it is the product. Release gates (illustrative): suitability precision &ge; 99.5%, significant incremental benefit vs. a holdout, zero coercive outputs, factuality blocks on fail.</p>
+          <p>A recommendation engine is probabilistic, so the spec defines what good looks like in numbers, how it fails safely, and where it must stop. In a fiduciary context that is not optional polish, it is the product. Release gates (illustrative): suitability precision &ge; 99.5%, significant incremental benefit vs. a holdout, zero coercive outputs, factuality blocks on fail. The eval harness behind those gates: ground truth built from expert-reviewed samples, LLM-as-judge scoring calibrated against human raters, and production monitoring for drift, with rollback as a first-class path.</p>
           <div class="gv">
             <span class="chip accent">Reg BI / fiduciary suitability gate</span>
             <span class="chip accent">Human-in-the-loop at recommendation boundaries</span>
@@ -362,6 +364,7 @@
     <p style="color:var(--ink);font-family:var(--serif);font-size:17px;margin-bottom:10px">Nayan Lal</p>
     <p>AI Product Manager · <a href="mailto:nayanlal1909@gmail.com">nayanlal1909@gmail.com</a> · <a href="https://www.linkedin.com/in/nayan-lal" target="_blank" rel="noopener">linkedin.com/in/nayan-lal</a></p>
     <p>Self-initiated product research, June 2026. Built from public sources as a discussion draft. Independent work, not affiliated with or endorsed by any firm. Kept out of search engines, please share by link.</p>
+    <p>Built AI-first: the research, the interactive artifacts on this page, and both companion documents were produced end to end with an AI-assisted pipeline, in days rather than weeks, with every figure human-reviewed.</p>
   </div>
 </footer>
 
