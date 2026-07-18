@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/advice-moments", "destination": "/product_ideas/Advice_Moments_v2/index.html" },
+    { "source": "/advice-moments/:path*", "destination": "/product_ideas/Advice_Moments_v2/:path*" },
+    { "source": "/case-study", "destination": "/research/vanguard/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    }
+  ]
+}

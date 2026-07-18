@@ -1,61 +1,82 @@
-# Advice Moments: product research by Nayan Lal (`pm-portfolio`)
+# pm-portfolio — product research by Nayan Lal
 
-A self-initiated product strategy study, **June 2026**, built entirely from public sources and framed as a discussion draft. The public site is focused on one study: **Advice Moments**, an outside-in product strategy for growing advice adoption among self-directed Vanguard investors.
+Self-initiated product strategy studies, written outside-in from public sources and framed as discussion drafts. Each study is a working artifact: interactive visuals plus the companion documents a product team would actually read.
 
-**▶ Live (once GitHub Pages is enabled):**
-- Landing: https://nayanlal029.github.io/pm-portfolio/
-- The study (current): https://nayanlal029.github.io/pm-portfolio/research/vanguard/
-- The study (previous version): https://nayanlal029.github.io/pm-portfolio/research/vanguard/v1/
+**Primary artifact — Advice Moments**
+An outside-in product strategy for growing advice adoption among self-directed investors: a governed personalization layer that surfaces the right advice step at the right moment, built as a phased, eval-governed AI system rather than a black box.
+
+> **Note on discretion:** the published page deliberately does not name the firm it studies. Thresholds and figures are public or illustrative. Keep this README consistent with that: no client name in the repo, so a stray link or a repo screenshot never becomes an issue.
+
+## Live
+
+| What | URL |
+| --- | --- |
+| Advice Moments (share this one) | `/product_ideas/Advice_Moments_v2/` |
+| Case study, long form | `/research/vanguard/` |
+| Case study, previous version | `/research/vanguard/v1/` |
+
+Currently served by GitHub Pages from `main` / root. Planned move to Vercel on a `nayanlal.com` subdomain, see **Hosting** below.
 
 ## Structure
 
 ```
 pm-portfolio/
-├── index.html                       # landing (Advice Moments cover, nav, mini continuum)
-├── assets/site.css                  # shared design system
-├── robots.txt                       # keeps the site out of search engines
+├── index.html                          # redirect to the primary artifact
+├── assets/site.css                     # shared design system (tokens, type, components, responsive rules)
+├── robots.txt                          # keeps the site out of search engines
+├── product_ideas/
+│   └── Advice_Moments_v2/              # PRIMARY: self-contained interactive study
+│       ├── index.html                  # hero, continuum, simulator, funnel, governance, retention
+│       ├── brief_src.html              # source for the gated brief PDF (company name masked)
+│       ├── Advice_Moments_Brief.pdf    # gated: opens after the request form
+│       └── Nayan_Lal_CV.pdf            # gated: opens after the request form
 └── research/
-    ├── vanguard/                    # Advice Moments (current version)
-    │   ├── index.html               # interactive case study
-    │   ├── brief.html / prd.html    # source for the PDFs
-    │   ├── Nayan_Lal_Vanguard_Advice_Moments_Brief.pdf
-    │   ├── Nayan_Lal_Vanguard_Advice_Moments_PRD.pdf
-    │   └── v1/                       # previous version, self-contained (frozen CSS)
-    └── mergerware/                   # earlier study, kept in the repo but not linked from the site
+    ├── vanguard/                       # long-form case study + companion PDFs
+    │   ├── index.html
+    │   ├── brief.html / prd.html       # sources for the PDFs
+    │   └── v1/                         # frozen earlier version, self-contained CSS
+    └── mergerware/                     # earlier study, intentionally unlinked from the site
 ```
 
-## The study: Advice Moments
+## Design system
 
-*Advice, the moment an investor crosses into the threshold.* A governed personalization layer that surfaces the right advice step to self-directed investors at the right moment, built as a phased, eval-governed AI system. Interactive pieces: a concentric advice continuum, a "moment" simulator across real public thresholds, a marketing-to-advice funnel (MGL → MQL → advisor call → DA/PA/PAS), a retention/churn view, plus an executive PR-FAQ brief and a full AI-PRD written as a behavioral contract.
+`assets/site.css` holds the tokens and components; each page adds only what is local to it.
 
-## Versions
+- Editorial serif headings, system sans body, deep-emerald accent, warm paper background.
+- Fully responsive: verified with zero horizontal overflow at 320px, 375px, and desktop.
+- Padding is set with `padding-top` / `padding-bottom` (never the four-value shorthand) on elements that also carry horizontal padding, so section spacing can never null out the side gutters.
+- Touch targets enlarge under `@media(pointer:coarse)`.
+- Scroll-reveal animation is CSS-gated behind a `.js` class on `<html>`, so content is always visible if JavaScript fails.
 
-- **Current:** `research/vanguard/`: wider desktop layout, scroll-spy nav, ring labels, funnel and retention visuals.
-- **Previous:** `research/vanguard/v1/`: the earlier version, preserved self-contained with its own frozen stylesheet so it renders exactly as it did.
+## Hosting
 
-## MergerWare
+**Current:** GitHub Pages, which requires the repo to stay public on a free plan.
 
-An earlier M&A SaaS product study lives at `research/mergerware/`. It is intentionally **not linked** from the public landing so the live site stays focused on a single company; the files remain in the repo as prior work.
+**Recommended:** keep the repo **private** and deploy from Vercel.
+
+1. GitHub → Settings → change repository visibility to **Private**.
+2. Vercel → Add New Project → import `pm-portfolio` (Vercel reads private repos on the free tier). Framework preset: **Other**. No build command, output directory `.`.
+3. Add a domain, e.g. `work.nayanlal.com`, and point a CNAME at Vercel from the `nayanlal.com` DNS.
+4. Optional but recommended: add `vercel.json` rewrites so the share link is clean, e.g. `/advice-moments` → `/product_ideas/Advice_Moments_v2/`.
+
+Notes on the alternatives: GitHub Pages from a private repo needs GitHub Pro, and the site is public regardless. Netlify and Cloudflare Pages also deploy private repos free. If the page itself ever needs to be login-gated, Cloudflare Access is the cheapest path.
 
 ## Regenerating the PDFs
 
 Rendered from the source HTML with headless Chrome:
 
-```
+```bash
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-cd research/vanguard
+cd product_ideas/Advice_Moments_v2
 "$CHROME" --headless=new --no-pdf-header-footer --virtual-time-budget=4000 \
-  --print-to-pdf="Nayan_Lal_Vanguard_Advice_Moments_Brief.pdf" "file://$PWD/brief.html"
-"$CHROME" --headless=new --no-pdf-header-footer --virtual-time-budget=4000 \
-  --print-to-pdf="Nayan_Lal_Vanguard_Advice_Moments_PRD.pdf" "file://$PWD/prd.html"
+  --print-to-pdf="Advice_Moments_Brief.pdf" "file://$PWD/brief_src.html"
 ```
 
-## Enabling the live site
+## Conventions
 
-**Settings → Pages → Source: "Deploy from a branch" → Branch: `main` / `/ (root)` → Save.** All paths above resolve within ~a minute. One toggle publishes every version.
+- No em dashes in any published copy.
+- Never name the firm on the public page or in this repo.
+- All figures are public or explicitly illustrative and directional, meant to start a conversation, not to represent any firm's actual data, roadmap, or economics.
+- Independent work, not affiliated with or endorsed by any company discussed, and not based on any confidential information.
 
-## Notes
-
-- Kept out of search engines (`noindex` + `robots.txt`): share by link. Make the repo private if you prefer (note: GitHub Pages on a private repo needs a paid plan).
-- All figures are public or illustrative and directional, meant to start a conversation. Independent work, not affiliated with or endorsed by any company discussed, and not based on any confidential information.
-- Prepared by Nayan Lal · nayanlal1909@gmail.com · linkedin.com/in/nayan-lal
+Prepared by Nayan Lal · nayanlal1909@gmail.com · linkedin.com/in/nayan-lal
